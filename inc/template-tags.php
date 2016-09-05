@@ -459,3 +459,38 @@ function cps_get_footer_social_links() {
 	<?php
 	return ob_get_clean();
 }
+
+/**
+ * Custom Loop for Posts
+ */
+function cps_get_custom_loop_random() {
+
+	// Post query.
+	query_posts(array(
+		'showposts' => 6,
+		'orderby' => 'rand',
+		'category_name' => 'feminism' // You can insert any category name
+	));
+
+	// // Open a list ( <ul> ).
+	$return_string = '<ul class="random-posts">';
+
+	// Creating the list of posts.
+	if (have_posts()) :
+		while (have_posts()) : the_post();
+			$return_string .= '<li><a href="' . get_permalink() . '">' . get_the_title() . '</a></li>';
+		endwhile;
+	endif;
+	// Close the list.
+	$return_string .= '</ul>';
+
+	// Resetting the WP query.
+	wp_reset_query();
+	// Displaying the list of random posts.
+	return $return_string;
+
+	ob_start(); ?>
+
+	<?php
+	return ob_get_clean();
+}
