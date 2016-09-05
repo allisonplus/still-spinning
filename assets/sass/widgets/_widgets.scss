@@ -1,7 +1,6 @@
 //--------------------------------------------------------------
 // Widgets
 //--------------------------------------------------------------
-
 .widget {
 	margin: 0 0 rem(24);
 
@@ -15,3 +14,13 @@
 .widget_search .search-submit {
 	display: none;
 } // .widget_search .search-submit
+
+
+.widget_twitter_timeline {
+	// text-align: right;
+
+	.widget-title {
+		// margin-left: rem(108);
+		// text-align: left;
+	}
+} // .widget_twitter_timeline
