@@ -12,7 +12,7 @@
  */
 function cps_font_url() {
 
-	$fonts_url = '';
+	$fonts_url = 'http://fonts.googleapis.com/css?family=Droid+Sans|Droid+Serif:400,700,400italic';
 
 	/**
 	 * Translators: If there are characters in your language that are not
@@ -67,6 +67,7 @@ function cps_scripts() {
 
 	// Enqueue styles.
 	wp_enqueue_style( 'cps-google-font' );
+
 	wp_enqueue_style( 'cps-style', get_stylesheet_directory_uri() . '/style' . $suffix . '.css', array(), $version );
 
 	// Enqueue scripts.

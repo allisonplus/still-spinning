@@ -15,6 +15,7 @@
 
 // Primary palette
 $color-blue: #21759b;
+$color-teal: #008080;
 $color-light-yellow: #fff9c0;
 $color-black: #000000;
 $color-white: #ffffff;
@@ -73,6 +74,6 @@ $color-background-screen-reader: $color-whitesmoke;
 $color-text-screen-reader: $color-blue;
 
 // Links
-$color-link: $color-blue;
-$color-link-visited: $color-blue;
-$color-link-hover: $color-blue;
+$color-link: $color-teal;
+$color-link-hover: darken($color-teal, 20%);
+$color-link-visited: $color-teal;

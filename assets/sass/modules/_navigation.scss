@@ -6,6 +6,8 @@
 
 a {
 	color: $color-link;
+	font-family: $font-sans;
+	text-decoration: none;
 
 	&:visited {
 		color: $color-link-visited;
