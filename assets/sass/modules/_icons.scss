@@ -31,3 +31,41 @@
 		} // &:last-child
 	} // .social-icon
 } // .social-icons
+
+
+
+//--------------------------------------------------------------
+// Social network icons gathered from customizer (includes email icon).
+//--------------------------------------------------------------
+.social-networks {
+	@include list-reset;
+
+	line-height: 1;
+
+	// Each social network.
+	.social-network {
+		display: inline-block;
+
+		// Make links take up full space.
+		a {
+			display: block;
+			fill: $color-link;
+
+			&:hover,
+			&:active {
+				fill: $color-link-hover;
+			}
+		} // a
+	} // .social-network
+
+	// Icon itself.
+	.icon {
+		@include size(rem(24));
+
+		// fill: $color-link;
+
+		&:hover {
+
+		} // &:hover
+	} // .icon
+} // .social-networks

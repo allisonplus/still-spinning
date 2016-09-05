@@ -20,6 +20,8 @@
 				<?php cps_do_copyright_text(); ?>
 			</div>
 
+			<?php echo cps_get_footer_social_links(); ?>
+
 		</div><!-- .wrap -->
 	</footer><!-- .site-footer -->
 </div><!-- #page -->

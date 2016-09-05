@@ -26,7 +26,8 @@ function cps_customize_register( $wp_customize ) {
     );
 
     // Create an array of our social links for ease of setup.
-    $social_networks = array( 'twitter', 'facebook', 'instagram' );
+    $social_networks = array( 'email', 'twitter', 'instagram', 'pinterest', 'vimeo' );
+
 
     // Loop through our networks to setup our fields.
     foreach( $social_networks as $network ) {

@@ -356,7 +356,7 @@ function cps_do_copyright_text() {
 	}
 
 	// Echo the text.
-	echo '<span class="copyright-text">' . wp_kses_post( $copyright_text ) . '</span>';
+	echo '<span class="copyright-text">	&#169;' . ' ' . wp_kses_post( $copyright_text ) . ' ' . date('Y') . '</span>';
 }
 
 /**
@@ -423,4 +423,39 @@ function cps_do_mobile_navigation_menu() {
 		?>
 	</nav>
 	<?php
+}
+
+/**
+ * Social links for the footer.
+ */
+function cps_get_footer_social_links() {
+
+	// Set an array of social networks.
+	$social_networks = array( 'twitter', 'instagram', 'vimeo', 'pinterest' );
+	$email = get_theme_mod( 'cps_email_link' );
+
+	ob_start(); ?>
+
+	<ul class="social-networks">
+
+	<?php // If there's no email, don't make this <li> in the first place .?>
+	<?php if (!empty($email)) : ?>
+		<li class="social-network email">
+			<a href="mailto:<?php echo esc_url( $email ); ?>">
+				<?php echo cps_get_svg( array( 'icon' => 'email-social', '' ) ); ?>
+			</a>
+		</li>
+	<?php endif; ?>
+
+	<?php // Continue <li>'s with rest of social networks provided. ?>
+	<?php foreach ( $social_networks as $network ) : ?>
+		<li class="social-network <?php echo $network; ?>">
+			<a href="<?php echo esc_url( get_theme_mod( 'cps_' . $network . '_link' ) ); ?>">
+				<?php echo cps_get_svg( array( 'icon' => $network . '-social', 'title' => $network . '' ) ); ?>
+			</a>
+		</li>
+	<?php endforeach; ?>
+	</ul><!-- .social-networks -->
+	<?php
+	return ob_get_clean();
 }
