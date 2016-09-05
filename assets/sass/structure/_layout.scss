@@ -21,13 +21,14 @@
 	}
 } // .site-header, .site-footer
 
-// .site-content {
-// 	margin: rem(20) auto;
+.site-content,
+.site-footer {
 
-// 	@include media($desktop) {
-// 		margin: rem(40) auto rem(60);
-// 	}
-// } // .site-content
+	// Wrap inside site-content less wide.
+	> .wrap {
+		max-width: rem(1114);
+	} // .wrap
+} // .site-content
 
 .primary {
 	@include fill-parent;
