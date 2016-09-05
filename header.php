@@ -47,6 +47,7 @@
 				<?php
 					wp_nav_menu( array(
 						'theme_location' => 'primary',
+						'container'      => false,
 						'menu_id'        => 'primary-menu',
 						'menu_class'     => 'menu dropdown'
 					) );

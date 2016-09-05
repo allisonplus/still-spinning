@@ -7,7 +7,6 @@
 a {
 	color: $color-link;
 	font-family: $font-sans;
-	text-decoration: none;
 
 	&:visited {
 		color: $color-link-visited;
@@ -111,26 +110,34 @@ a {
 
 	// Menu hyperlinks
 	a {
+		color: $color-emperor;
 		display: block;
+		font-weight: 600;
+		padding: rem(10);
+		text-align: center;
 		text-decoration: none;
+		text-transform: uppercase;
+
+		&:hover,
+		&:active {
+			color: $color-teal;
+		} // &:hover, &:active
 	} // a
 
 	// Current items
 	.current_page_item a,
 	.current-menu-item a {
+		color: $color-teal;
 	}
 } // .menu
 
 // Main navigation (after creating a menu in the dashboard)
 .main-navigation {
-	@include size(100% auto);
-
 	clear: both;
 	display: none;
-	float: left;
 
 	@include media($tablet-landscape) {
-		display: block;
+		display: inline-block;
 	}
 
 	// Menu area

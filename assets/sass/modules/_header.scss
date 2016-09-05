@@ -1,11 +1,42 @@
 //--------------------------------------------------------------
 // Header
 //--------------------------------------------------------------
+.site-header {
+
+	// Wrap around header content.
+	.wrap {
+		align-items: center;
+		display: flex;
+		height: rem(90);
+		justify-content: space-between;
+
+		// Overwrites pseudo because of flexbox.
+		&:after {
+			display: none;
+		} // &:after
+	}
+} // .site-header
 
 // Site Title
 .site-title {
-	font-size: rem(48);
+	font-size: rem(25);
+	margin-bottom: 0;
+
+	// Site title link.
+	a {
+		color: $color-emperor;
+		text-decoration: none;
+
+		&:visited {
+			color: $color-emperor;
+		}
+	} // a
 } // .site-title
+
+// Site branding
+.site-branding {
+	display: inline-block;
+} // .site-branding
 
 // Site Description
 .site-description {
