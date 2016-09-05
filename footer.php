@@ -15,12 +15,15 @@
 
 	<footer class="site-footer">
 		<div class="wrap">
+			<aside class="widget-area footer" role="complementary">
+				 <?php dynamic_sidebar( 'sidebar-2' ); ?>
+			</aside>
+
+			<?php echo cps_get_footer_social_links(); ?>
 
 			<div class="site-info">
 				<?php cps_do_copyright_text(); ?>
-			</div>
-
-			<?php echo cps_get_footer_social_links(); ?>
+			</div> <!-- .site-info -->
 
 		</div><!-- .wrap -->
 	</footer><!-- .site-footer -->

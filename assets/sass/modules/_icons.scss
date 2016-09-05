@@ -41,19 +41,26 @@
 	@include list-reset;
 
 	line-height: 1;
+	margin-bottom: rem(15);
+	text-align: center;
 
 	// Each social network.
 	.social-network {
 		display: inline-block;
+		margin-right: rem(15);
+
+		&:last-of-type {
+			margin-right: 0;
+		} // &:last-of-type
 
 		// Make links take up full space.
 		a {
 			display: block;
-			fill: $color-link;
+			fill: $color-emperor;
 
 			&:hover,
 			&:active {
-				fill: $color-link-hover;
+				fill: $color-teal;
 			}
 		} // a
 	} // .social-network
@@ -61,11 +68,5 @@
 	// Icon itself.
 	.icon {
 		@include size(rem(24));
-
-		// fill: $color-link;
-
-		&:hover {
-
-		} // &:hover
 	} // .icon
 } // .social-networks

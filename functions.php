@@ -97,7 +97,7 @@ function cps_widgets_init() {
 	// Define sidebars
 	$sidebars = array(
 		'sidebar-1'  => esc_html__( 'Sidebar 1', 'cps' ),
-	//	'sidebar-2'  => esc_html__( 'Sidebar 2', 'cps' ),
+		'sidebar-2'  => esc_html__( 'Footer Widgets', 'cps' ),
 	//	'sidebar-3'  => esc_html__( 'Sidebar 3', 'cps' ),
 	);
 
