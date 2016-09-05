@@ -1,0 +1,29 @@
+/*
+Theme Name: Spin
+Theme URI: http://www.createpositivespin.com
+Author: Allison Tarr
+Author URI: http://www.allisontarr.com
+Description: Sparkly version of CPS
+Version: 1.0.0
+License: GNU General Public License v2 or later
+License URI: http://www.gnu.org/licenses/gpl-2.0.html
+Text Domain: cps
+Tags: custom
+
+This theme, like WordPress, is licensed under the GPL.
+
+Based on Underscores http://underscores.me/, (C) 2012-2016 Automattic, Inc.
+
+*/
+
+@import "bourbon";
+@import "utilities/variables/index";
+@import "neat";
+@import "utilities/mixins/index";
+
+@import "base/index";
+@import "structure/index";
+@import "modules/index";
+@import "plugins/index";
+@import "views/index";
+@import "widgets/index";
