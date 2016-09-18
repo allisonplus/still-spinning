@@ -9,13 +9,17 @@
 
 ?>
 
+<?php // Only display custom loop on front-page. ?>
+<?php if ( is_front_page() ) :
+	echo cps_get_recent_loop();
+endif;
+?>
+
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 
 	<header class="entry-header">
-		<?php // Only display custom loop of random posts on front-page. ?>
-		<?php if ( is_front_page() ) :
-			echo cps_get_custom_loop_random();
-			// the_title( '<h1 class="entry-title">', '</h1>' );
+		<?php if ( ! is_front_page() ) :
+			the_title( '<h1 class="entry-title">', '</h1>' );
 		endif;
 		?>
 	</header><!-- .entry-header -->
