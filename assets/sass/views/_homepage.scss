@@ -1,6 +1,113 @@
 //--------------------------------------------------------------
 // Homepage Template
 //--------------------------------------------------------------
-.random-posts {
-	@include list-reset;
-} // .random-posts
+.site-main {
+	overflow: hidden;
+} // .site-main
+
+// Main page.
+.home {
+
+	// Highlighted Photo.
+	.photo-highlighted {
+		background-position: 50%;
+		background-repeat: no-repeat;
+		background-size: cover;
+		height: 100%;
+		max-width: 100%;
+		opacity: .6;
+		// width: 800px;
+	} // .photo-highlighted
+
+	// Post title.
+	.entry-title {
+		margin: 0;
+
+		a {
+			color: $color-white;
+			font-family: 'Droid Sans', sans-serif;
+			font-size: rem(35);
+			font-weight: 400;
+			letter-spacing: rem(1.2);
+			line-height: rem(35);
+		} // a
+	} // .entry-title
+
+	// Wrapper around all content within article.
+	.thumbnail-header {
+		@include position(absolute, 30% null null 5%);
+
+		display: inline-block;
+		font-size: rem(35);
+		line-height: rem(35);
+		margin: 0 rem(8) 0 0;
+		text-transform: uppercase;
+	} // .thumbnail-header
+
+	// Meta data.
+	.meta-data {
+		color: $color-white;
+		font-size: rem(14);
+		font-weight: 700;
+		letter-spacing: 1.2px;
+		margin-bottom: rem(10);
+		text-transform :uppercase;
+		transform: skew(-20deg);
+		webkit-transform: skew(-20deg);
+	} // .meta-data
+
+	// Category.
+	.entry-cat {
+		background: #f3f3f3;
+		color: #505050;
+		margin-right: 35px;
+		padding: 6px;
+
+		a {
+			position: relative;
+			display: inline-block;
+			line-height: rem(30);
+			color: #505050;
+			transform: skew(20deg);
+			webkit-transform: skew(20deg);
+			margin-left: rem(8);
+		} // a
+
+		&:hover {
+			padding-left:14px;
+			padding-right:14px;
+			transition:padding .3s;
+			-webkit-transition:padding .3s;
+		} // &:hover
+	}  // .entry-cat
+
+	.entry-cat a,
+	.entry-date p {
+		font-family: 'Droid Sans', sans-serif;
+		display: inline-block;
+		transform: skew(20deg);
+		webkit-transform: skew(20deg);
+	} // span.entry-cat a, span.entry-date p
+} // .home
+
+// Recent 3 posts.
+.recent-posts {
+	overflow: hidden;
+
+	// Each post.
+	article {
+		@include position(relative, null null null null);
+		@include size(33.3% rem(400));
+
+		background-color: #222;
+		border: rem(1) solid #FFF;
+		float: left;
+	} // article
+} // .recent-posts
+
+// Clock symbol.
+.fa-clock-o {
+	font-size: rem(16);
+	margin-right: rem(8);
+	transform:skew(20deg);
+} // .fa-clock-o
