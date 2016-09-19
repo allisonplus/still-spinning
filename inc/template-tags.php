@@ -521,3 +521,16 @@ function cps_get_recent_loop() {
 	<?php
 	return ob_get_clean();
 }
+
+/**
+ * Custom Loop for Posts
+ */
+function cps_get_about_info() {
+
+	ob_start(); ?>
+
+
+
+	<?php
+	return ob_get_clean();
+}
