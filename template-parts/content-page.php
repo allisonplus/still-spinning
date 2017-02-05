@@ -9,12 +9,6 @@
 
 ?>
 
-<?php // Only display custom loop on front-page. ?>
-<?php if ( is_front_page() ) :
-	echo cps_get_recent_loop();
-endif;
-?>
-
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 
 	<header class="entry-header">
