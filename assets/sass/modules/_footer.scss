@@ -6,6 +6,14 @@
 	text-align: center;
 } // .site-info
 
+.site-footer {
+	padding-bottom: rem(65);
+
+	@include media($tablet-landscape) {
+		padding-bottom: 0;
+	}
+} // .site-footer
+
 .footer {
 	display: flex;
 	flex-direction: column;
@@ -17,8 +25,11 @@
 
 	// Footer widget area as a whole.
 	&.widget-area {
-		margin-bottom: rem(50);
-		max-height: rem(223);
-		overflow: hidden;
+
+		@include media($tablet-landscape) {
+			margin-bottom: rem(50);
+			max-height: rem(223);
+			overflow: hidden;
+		}
 	} // &.widget-area
 } // .footer
