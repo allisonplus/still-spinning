@@ -13,13 +13,12 @@
 	}
 } // .wrap
 
-.site-header,
 .site-footer {
 
 	@include media($tablet-landscape) {
 		padding: 0 2 * $gutter;
 	}
-} // .site-header, .site-footer
+} // .site-footer
 
 .site-content {
 
