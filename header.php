@@ -28,7 +28,6 @@
 	<a class="skip-link screen-reader-text" href="#main"><?php esc_html_e( 'Skip to content', 'cps' ); ?></a>
 
 	<header class="site-header">
-		<div class="wrap">
 
 			<div class="site-branding">
 				<?php if ( is_front_page() && is_home() ) : ?>
@@ -47,14 +46,13 @@
 				<?php
 					wp_nav_menu( array(
 						'theme_location' => 'primary',
-						'container'      => false,
+						'container'      => 'false',
 						'menu_id'        => 'primary-menu',
-						'menu_class'     => 'menu dropdown'
+						'menu_class'     => 'menu dropdown',
 					) );
 				?>
 			</nav><!-- #site-navigation -->
 
-		</div><!-- .wrap -->
 	</header><!-- #masthead -->
 
 	<div id="content" class="site-content">
