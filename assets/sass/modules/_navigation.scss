@@ -26,6 +26,7 @@ a {
 	@include list-reset;
 
 	li {
+		font-size: rem(22);
 		margin: 0 rem(10) 0 0;
 
 		&:last-of-type {
@@ -51,8 +52,8 @@ a {
 		} // li
 
 		a {
-			padding: rem(10);
 			border-bottom: 1px solid $color-background-hr;
+			padding: rem(10);
 		} // a
 	}
 
@@ -60,7 +61,7 @@ a {
 
 		// Sub-menu
 		ul {
-			box-shadow: 0 3px 3px rgba(0, 0, 0, 0.2);
+			box-shadow: 0 3px 3px rgba($color-black, 0.2);
 			float: left;
 			left: -999em;
 			position: absolute;
@@ -117,7 +118,7 @@ a {
 	a {
 		color: $color-emperor;
 		display: block;
-		font-weight: 600;
+		font-weight: 400;
 		padding: rem(10);
 		text-align: center;
 		text-decoration: none;
@@ -143,6 +144,7 @@ a {
 
 	@include media($tablet-landscape) {
 		display: inline-block;
+		float: right;
 	}
 
 	// Menu area

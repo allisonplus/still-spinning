@@ -2,25 +2,61 @@
 // Header
 //--------------------------------------------------------------
 .site-header {
-
-	// Wrap around header content.
-	.wrap {
-		align-items: center;
-		display: flex;
-		height: rem(90);
-		justify-content: space-between;
-
-		// Overwrites pseudo because of flexbox.
-		&:after {
-			display: none;
-		} // &:after
-	}
+	align-items: center;
+	background-color: $color-white;
+	border-bottom: rem(1) solid rgba($color-black, 0.2);
+	display: flex;
+	justify-content: space-between;
+	margin: 0 auto;
+	max-width: rem(1600);
+	padding: 0 2 * $gutter;
+	position: relative;
+	z-index: 9;
 } // .site-header
+
+// Nav.
+nav {
+	background-color: transparent;
+	display: flex;
+	position: relative;
+	z-index: 10;
+} // nav
+
+// Menu.
+.menu {
+	display: flex;
+	flex-direction: row;
+	font-family: $font-sans;
+	justify-content: space-around;
+	margin: 0;
+	padding: rem(10);
+
+	li {
+		list-style-type: none;
+
+		a {
+			color: $color-black;
+			display: block;
+			padding: rem(15.5) rem(35);
+			text-align: center;
+			transition: color 0.2s ease-in-out;
+
+			&:hover {
+				// color: darken($color-gold, 15%);
+			} // &:hover
+		} // a
+	} // li
+} // .menu
 
 // Site Title
 .site-title {
-	font-size: rem(25);
+	float: left;
+	font-size: rem(35);
 	margin-bottom: 0;
+
+	@include media($tablet-portrait) {
+		font-size: rem(37);
+	}
 
 	// Site title link.
 	a {
