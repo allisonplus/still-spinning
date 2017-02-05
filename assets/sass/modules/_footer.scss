@@ -8,7 +8,12 @@
 
 .footer {
 	display: flex;
+	flex-direction: column;
 	justify-content: space-between;
+
+	@include media($tablet-landscape) {
+		flex-direction: row;
+	}
 
 	// Footer widget area as a whole.
 	&.widget-area {
