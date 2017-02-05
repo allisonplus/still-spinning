@@ -14,18 +14,15 @@
 	</div><!-- #content -->
 
 	<footer class="site-footer">
-		<div class="wrap">
-			<aside class="widget-area footer" role="complementary">
-				 <?php dynamic_sidebar( 'sidebar-2' ); ?>
-			</aside>
+		<aside class="widget-area footer" role="complementary">
+			<?php dynamic_sidebar( 'sidebar-2' ); ?>
+		</aside>
 
-			<?php echo cps_get_footer_social_links(); ?>
+		<?php echo cps_get_footer_social_links(); ?>
 
-			<div class="site-info">
-				<?php cps_do_copyright_text(); ?>
-			</div> <!-- .site-info -->
-
-		</div><!-- .wrap -->
+		<div class="site-info">
+			<?php cps_do_copyright_text(); ?>
+		</div> <!-- .site-info -->
 	</footer><!-- .site-footer -->
 </div><!-- #page -->
 
