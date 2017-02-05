@@ -15,7 +15,7 @@
 		background-size: cover;
 		height: 100%;
 		max-width: 100%;
-		opacity: .6;
+		opacity: 0.6;
 		// width: 800px;
 	} // .photo-highlighted
 
@@ -25,7 +25,7 @@
 
 		a {
 			color: $color-white;
-			font-family: 'Droid Sans', sans-serif;
+			font-family: "Droid Sans", sans-serif;
 			font-size: rem(35);
 			font-weight: 400;
 			letter-spacing: rem(1.2);
@@ -46,47 +46,47 @@
 
 	// Meta data.
 	.meta-data {
+		-webkit-transform: skew(-20deg);
 		color: $color-white;
 		font-size: rem(14);
 		font-weight: 700;
 		letter-spacing: rem(1.2);
 		margin-bottom: rem(10);
-		text-transform :uppercase;
+		text-transform: uppercase;
 		transform: skew(-20deg);
-		webkit-transform: skew(-20deg);
 	} // .meta-data
 
 	// Category.
 	.entry-cat {
-		background: #f3f3f3;
-		color: #505050;
-		margin-right: 35px;
-		padding: 6px;
+		background: $color-whitesmoke;
+		color: $color-emperor;
+		margin-right: rem(35);
+		padding: rem(6);
 
 		a {
-			position: relative;
+			-webkit-transform: skew(20deg);
+			color: $color-emperor;
 			display: inline-block;
 			line-height: rem(30);
-			color: #505050;
-			transform: skew(20deg);
-			webkit-transform: skew(20deg);
 			margin-left: rem(8);
+			position: relative;
+			transform: skew(20deg);
 		} // a
 
 		&:hover {
+			-webkit-transition: padding 0.3s;
 			padding-left: rem(14);
 			padding-right: rem(14);
-			transition:padding .3s;
-			-webkit-transition:padding .3s;
+			transition: padding 0.3s;
 		} // &:hover
 	}  // .entry-cat
 
 	.entry-cat a,
 	.entry-date p {
-		font-family: 'Droid Sans', sans-serif;
+		-webkit-transform: skew(20deg);
 		display: inline-block;
+		font-family: "Droid Sans", sans-serif;
 		transform: skew(20deg);
-		webkit-transform: skew(20deg);
 	} // span.entry-cat a, span.entry-date p
 } // .home
 
@@ -99,7 +99,7 @@
 		@include position(relative, null null null null);
 		@include size(100% rem(400));
 
-		background-color: #222;
+		background-color: $color-cod-gray;
 		border: rem(1) solid $color-white;
 		float: left;
 
@@ -113,5 +113,5 @@
 .fa-clock-o {
 	font-size: rem(16);
 	margin-right: rem(8);
-	transform:skew(20deg);
+	transform: skew(20deg);
 } // .fa-clock-o
