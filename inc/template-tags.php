@@ -8,73 +8,73 @@
  */
 
 if ( ! function_exists( 'cps_posted_on' ) ) :
-/**
- * Prints HTML with meta information for the current post-date/time and author.
- */
-function cps_posted_on() {
-	$time_string = '<time class="entry-date published updated" datetime="%1$s">%2$s</time>';
-	if ( get_the_time( 'U' ) !== get_the_modified_time( 'U' ) ) {
-		$time_string = '<time class="entry-date published" datetime="%1$s">%2$s</time><time class="updated" datetime="%3$s">%4$s</time>';
+	/**
+	 * Prints HTML with meta information for the current post-date/time and author.
+	 */
+	function cps_posted_on() {
+		$time_string = '<time class="entry-date published updated" datetime="%1$s">%2$s</time>';
+		if ( get_the_time( 'U' ) !== get_the_modified_time( 'U' ) ) {
+			$time_string = '<time class="entry-date published" datetime="%1$s">%2$s</time><time class="updated" datetime="%3$s">%4$s</time>';
+		}
+
+		$time_string = sprintf( $time_string,
+			esc_attr( get_the_date( 'c' ) ),
+			esc_html( get_the_date() ),
+			esc_attr( get_the_modified_date( 'c' ) ),
+			esc_html( get_the_modified_date() )
+		);
+
+		$posted_on = sprintf(
+			esc_html_x( 'Posted on %s', 'post date', 'cps' ),
+			'<a href="' . esc_url( get_permalink() ) . '" rel="bookmark">' . $time_string . '</a>'
+		);
+
+		$byline = sprintf(
+			esc_html_x( 'by %s', 'post author', 'cps' ),
+			'<span class="author vcard"><a class="url fn n" href="' . esc_url( get_author_posts_url( get_the_author_meta( 'ID' ) ) ) . '">' . esc_html( get_the_author() ) . '</a></span>'
+		);
+
+		echo '<span class="posted-on">' . $posted_on . '</span><span class="byline"> ' . $byline . '</span>'; // WPCS: XSS OK.
+
 	}
-
-	$time_string = sprintf( $time_string,
-		esc_attr( get_the_date( 'c' ) ),
-		esc_html( get_the_date() ),
-		esc_attr( get_the_modified_date( 'c' ) ),
-		esc_html( get_the_modified_date() )
-	);
-
-	$posted_on = sprintf(
-		esc_html_x( 'Posted on %s', 'post date', 'cps' ),
-		'<a href="' . esc_url( get_permalink() ) . '" rel="bookmark">' . $time_string . '</a>'
-	);
-
-	$byline = sprintf(
-		esc_html_x( 'by %s', 'post author', 'cps' ),
-		'<span class="author vcard"><a class="url fn n" href="' . esc_url( get_author_posts_url( get_the_author_meta( 'ID' ) ) ) . '">' . esc_html( get_the_author() ) . '</a></span>'
-	);
-
-	echo '<span class="posted-on">' . $posted_on . '</span><span class="byline"> ' . $byline . '</span>'; // WPCS: XSS OK.
-
-}
 endif;
 
 if ( ! function_exists( 'cps_entry_footer' ) ) :
-/**
- * Prints HTML with meta information for the categories, tags and comments.
- */
-function cps_entry_footer() {
-	// Hide category and tag text for pages.
-	if ( 'post' === get_post_type() ) {
-		/* translators: used between list items, there is a space after the comma */
-		$categories_list = get_the_category_list( esc_html__( ', ', 'cps' ) );
-		if ( $categories_list && cps_categorized_blog() ) {
-			printf( '<span class="cat-links">' . esc_html__( 'Posted in %1$s', 'cps' ) . '</span>', $categories_list ); // WPCS: XSS OK.
+	/**
+	 * Prints HTML with meta information for the categories, tags and comments.
+	 */
+	function cps_entry_footer() {
+		// Hide category and tag text for pages.
+		if ( 'post' === get_post_type() ) {
+			/* translators: used between list items, there is a space after the comma */
+			$categories_list = get_the_category_list( esc_html__( ', ', 'cps' ) );
+			if ( $categories_list && cps_categorized_blog() ) {
+				printf( '<span class="cat-links">' . esc_html__( 'Posted in %1$s', 'cps' ) . '</span>', $categories_list ); // WPCS: XSS OK.
+			}
+
+			/* translators: used between list items, there is a space after the comma */
+			$tags_list = get_the_tag_list( '', esc_html__( ', ', 'cps' ) );
+			if ( $tags_list ) {
+				printf( '<span class="tags-links">' . esc_html__( 'Tagged %1$s', 'cps' ) . '</span>', $tags_list ); // WPCS: XSS OK.
+			}
 		}
 
-		/* translators: used between list items, there is a space after the comma */
-		$tags_list = get_the_tag_list( '', esc_html__( ', ', 'cps' ) );
-		if ( $tags_list ) {
-			printf( '<span class="tags-links">' . esc_html__( 'Tagged %1$s', 'cps' ) . '</span>', $tags_list ); // WPCS: XSS OK.
+		if ( ! is_single() && ! post_password_required() && ( comments_open() || get_comments_number() ) ) {
+			echo '<span class="comments-link">';
+			comments_popup_link( esc_html__( 'Leave a comment', 'cps' ), esc_html__( '1 Comment', 'cps' ), esc_html__( '% Comments', 'cps' ) );
+			echo '</span>';
 		}
-	}
 
-	if ( ! is_single() && ! post_password_required() && ( comments_open() || get_comments_number() ) ) {
-		echo '<span class="comments-link">';
-		comments_popup_link( esc_html__( 'Leave a comment', 'cps' ), esc_html__( '1 Comment', 'cps' ), esc_html__( '% Comments', 'cps' ) );
-		echo '</span>';
+		edit_post_link(
+			sprintf(
+				/* translators: %s: Name of current post */
+				esc_html__( 'Edit %s', 'cps' ),
+				the_title( '<span class="screen-reader-text">"', '"</span>', false )
+			),
+			'<span class="edit-link">',
+			'</span>'
+		);
 	}
-
-	edit_post_link(
-		sprintf(
-			/* translators: %s: Name of current post */
-			esc_html__( 'Edit %s', 'cps' ),
-			the_title( '<span class="screen-reader-text">"', '"</span>', false )
-		),
-		'<span class="edit-link">',
-		'</span>'
-	);
-}
 endif;
 
 /**
@@ -148,7 +148,7 @@ function cps_get_svg( $args = array() ) {
 	$defaults = array(
 		'icon'  => '',
 		'title' => '',
-		'desc'  => ''
+		'desc'  => '',
 	);
 
 	// Parse args.
@@ -157,7 +157,7 @@ function cps_get_svg( $args = array() ) {
 	// Figure out which title to use.
 	$title = ( $args['title'] ) ? $args['title'] : $args['icon'];
 
-	// Begin SVG markup
+	// Begin SVG markup.
 	$svg = '<svg class="icon icon-' . esc_html( $args['icon'] ) . '" aria-hidden="true">';
 
 	// Add title markup.
@@ -177,24 +177,24 @@ function cps_get_svg( $args = array() ) {
 /**
  * Display an SVG.
  *
- * @param  array  $args  Parameters needed to display an SVG.
+ * @param  array $args  Parameters needed to display an SVG.
  */
 function cps_do_svg( $args = array() ) {
-	echo cps_get_svg( $args );
+	echo cps_get_svg( $args ); // WPCS: XSS ok.
 }
 
 /**
  * Trim the title length.
  *
- * @param  array  $args  Parameters include length and more.
+ * @param  array $args  Parameters include length and more.
  * @return string        The shortened excerpt.
  */
 function cps_get_the_title( $args = array() ) {
 
 	// Set defaults.
 	$defaults = array(
-		'length'  => 12,
-		'more'    => '...'
+		'length' => 12,
+		'more'   => '...',
 	);
 
 	// Parse args.
@@ -215,7 +215,7 @@ add_filter( 'the_content_more_link', 'cps_content_more_link' );
 /**
  * Customize the [...] on the_excerpt();
  *
- * @param string   $more     The current $more string.
+ * @param string $more     The current $more string.
  * @return string            Replace with "Read More..."
  */
 function cps_excerpt_more( $more ) {
@@ -226,7 +226,7 @@ add_filter( 'excerpt_more', 'cps_excerpt_more' );
 /**
  * Limit the excerpt length.
  *
- * @param  array  $args  Parameters include length and more.
+ * @param  array $args  Parameters include length and more.
  * @return string        The shortened excerpt.
  */
 function cps_get_the_excerpt( $args = array() ) {
@@ -234,7 +234,7 @@ function cps_get_the_excerpt( $args = array() ) {
 	// Set defaults.
 	$defaults = array(
 		'length' => 20,
-		'more'   => '...'
+		'more'   => '...',
 	);
 
 	// Parse args.
@@ -247,7 +247,7 @@ function cps_get_the_excerpt( $args = array() ) {
 /**
  * Echo an image, no matter what.
  *
- * @param string  $size  The image size you want to display.
+ * @param string $size  The image size you want to display.
  */
 function cps_do_post_image( $size = 'thumbnail' ) {
 
@@ -256,7 +256,7 @@ function cps_do_post_image( $size = 'thumbnail' ) {
 		return the_post_thumbnail( $size );
 	}
 
-	// Check for any attached image
+	// Check for any attached image.
 	$media = get_attached_media( 'image', get_the_ID() );
 	$media = current( $media );
 
@@ -268,13 +268,13 @@ function cps_do_post_image( $size = 'thumbnail' ) {
 		$media_url = ( 'thumbnail' === $size ) ? wp_get_attachment_thumb_url( $media->ID ) : wp_get_attachment_url( $media->ID );
 	}
 
-	echo '<img src="' . esc_url( $media_url ) . '" class="attachment-thumbnail wp-post-image" alt="' . esc_html( get_the_title() )  . '" />';
+	echo '<img src="' . esc_url( $media_url ) . '" class="attachment-thumbnail wp-post-image" alt="' . esc_html( get_the_title() ) . '" />';
 }
 
 /**
  * Return an image URI, no matter what.
  *
- * @param  string  $size  The image size you want to return.
+ * @param  string $size  The image size you want to return.
  * @return string         The image URI.
  */
 function cps_get_post_image_uri( $size = 'thumbnail' ) {
@@ -308,7 +308,7 @@ function cps_get_post_image_uri( $size = 'thumbnail' ) {
 /**
  * Get an attachment ID from it's URL.
  *
- * @param  string  $attachment_url  The URL of the attachment.
+ * @param  string $attachment_url  The URL of the attachment.
  * @return int                      The attachment ID.
  */
 function cps_get_attachment_id_from_url( $attachment_url = '' ) {
@@ -356,7 +356,7 @@ function cps_do_copyright_text() {
 	}
 
 	// Echo the text.
-	echo '<span class="copyright-text">	&#169;' . ' ' . wp_kses_post( $copyright_text ) . ' ' . date('Y') . '</span>';
+	echo '<span class="copyright-text">	&#169;' . ' ' . wp_kses_post( $copyright_text ) . ' ' . date( 'Y' ) . '</span>';
 }
 
 /**
@@ -367,9 +367,9 @@ function cps_do_copyright_text() {
 function cps_get_social_share() {
 
 	// Build the sharing URLs.
-	$twitter_url  = 'https://twitter.com/share?text=' . urlencode( html_entity_decode( get_the_title() ) ) . '&amp;url=' . rawurlencode ( get_the_permalink() );
-	$facebook_url = 'https://www.facebook.com/sharer/sharer.php?u=' . rawurlencode ( get_the_permalink() );
-	$linkedin_url = 'https://www.linkedin.com/shareArticle?title=' . urlencode( html_entity_decode( get_the_title() ) ) . '&amp;url=' . rawurlencode ( get_the_permalink() );
+	$twitter_url  = 'https://twitter.com/share?text=' . urlencode( html_entity_decode( get_the_title() ) ) . '&amp;url=' . rawurlencode( get_the_permalink() );
+	$facebook_url = 'https://www.facebook.com/sharer/sharer.php?u=' . rawurlencode( get_the_permalink() );
+	$linkedin_url = 'https://www.linkedin.com/shareArticle?title=' . urlencode( html_entity_decode( get_the_title() ) ) . '&amp;url=' . rawurlencode( get_the_permalink() );
 
 	// Start the markup.
 	ob_start(); ?>
@@ -399,14 +399,14 @@ function cps_get_social_share() {
 
 	<?php
 	return ob_get_clean();
- }
+}
 
 /**
  * Output the mobile navigation
  */
 function cps_do_mobile_navigation_menu() {
 
-	// Figure out which menu we're pulling
+	// Figure out which menu we're pulling.
 	$mobile_menu = has_nav_menu( 'mobile' ) ? 'mobile' : 'primary';
 	?>
 
@@ -418,7 +418,7 @@ function cps_do_mobile_navigation_menu() {
 				'menu_id'        => 'primary-menu',
 				'menu_class'     => 'menu dropdown mobile-nav',
 				'link_before'    => '<span>',
-				'link_after'     => '</span>'
+				'link_after'     => '</span>',
 			) );
 		?>
 	</nav>
@@ -439,10 +439,10 @@ function cps_get_footer_social_links() {
 	<ul class="social-networks">
 
 	<?php // If there's no email, don't make this <li> in the first place .?>
-	<?php if (!empty($email)) : ?>
+	<?php if ( ! empty( $email ) ) : ?>
 		<li class="social-network email">
 			<a href="mailto:<?php echo esc_url( $email ); ?>">
-				<?php echo cps_get_svg( array( 'icon' => 'email-social', '' ) ); ?>
+				<?php echo cps_get_svg( array( 'icon' => 'email-social', '' ) ); // WPCS: XSS ok. ?>
 			</a>
 		</li>
 	<?php endif; ?>
@@ -465,7 +465,7 @@ function cps_get_footer_social_links() {
  */
 function cps_get_recent_loop() {
 
-	$mainQuery = new WP_Query(
+	$main_query = new WP_Query(
 		array(
 			'posts_per_page' => 3,
 		)
@@ -474,35 +474,35 @@ function cps_get_recent_loop() {
 	ob_start(); ?>
 
 	<div class="recent-posts">
-	<?php if ( $mainQuery->have_posts()) : ?>
+	<?php if ( $main_query->have_posts() ) : ?>
 
-		<?php while ( $mainQuery->have_posts()) : $mainQuery->the_post(); ?>
+		<?php while ( $main_query->have_posts() ) : $main_query->the_post(); ?>
 
 		<?php
 			$thumb_id = get_post_thumbnail_id();
-			$thumb_url_array = wp_get_attachment_image_src($thumb_id, 'highlighted', true);
+			$thumb_url_array = wp_get_attachment_image_src( $thumb_id, 'highlighted', true );
 			$thumb_url = $thumb_url_array[0];
 		?>
 		<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 
 			<div class="photo-highlighted" style="background-image:url(<?= $thumb_url ?>)"></div> <!--/photo-highlighted-->
 
-			<a class="post-link" href="<?php the_permalink(); ?>" title="Permalink to: <?php esc_attr(the_title_attribute()); ?>" rel="bookmark"></a>
+			<a class="post-link" href="<?php the_permalink(); ?>" title="Permalink to: <?php esc_attr( the_title_attribute() ); ?>" rel="bookmark"></a>
 
 			<div class="thumbnail-header">
 				<div class="meta-data">
 					<span class="entry-cat" id="entry-cat">
 						<?php
 						$category = get_the_category();
-						if($category[0]){
-							echo '<a href="'.get_category_link($category[0]->term_id ).'">'.$category[0]->cat_name.'</a>';
+						if( $category[0] ){
+							echo '<a href="' . get_category_link( $category[0]->term_id ).'">' . $category[0]->cat_name . '</a>';
 						} ?>
 					</span>
-					<span class="entry-date"><i class="fa fa-clock-o"></i><?php the_date('F jS, Y', '<p>', '</p>'); ?></span>
+					<span class="entry-date"><i class="fa fa-clock-o"></i><?php the_date( 'F jS, Y', '<p>', '</p>' ); ?></span>
 
 				</div> <!--/.meta-data-->
 					<h2 class="entry-title">
-					<a href="<?php the_permalink(); ?>" title="Permalink to: <?php esc_attr(the_title_attribute()); ?>" rel="bookmark">
+					<a href="<?php the_permalink(); ?>" title="Permalink to: <?php esc_attr( the_title_attribute() ); ?>" rel="bookmark">
 						<?php the_title(); ?>
 					</a>
 				</h2>
@@ -513,7 +513,7 @@ function cps_get_recent_loop() {
 
 		<?php wp_reset_postdata(); ?>
 
-		<?php else:  ?>
+		<?php else :  ?>
 
 		<?php endif; ?>
 	</div> <!--/.recent-posts-->
