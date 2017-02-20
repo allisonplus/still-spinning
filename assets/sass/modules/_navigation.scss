@@ -155,17 +155,13 @@ a {
 
 // Main navigation (after creating a menu in the dashboard)
 .main-navigation {
-	// clear: both;
-	// display: none;
-	// display: none;
-	float: right;
+	display: none;
 	position: relative;
 	text-transform: uppercase;
 	width: auto;
 
 	@include media($tablet-landscape) {
-		// display: inline-block;
-		// float: right;
+		display: inline-block;
 	}
 
 	// Menu area
