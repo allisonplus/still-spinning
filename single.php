@@ -11,7 +11,7 @@ get_header(); ?>
 
 	<div class="wrap">
 		<div class="primary content-area">
-			<main id="main" class="site-main" role="main">
+			<main id="main" class="site-main blog-single" role="main">
 
 			<?php
 			while ( have_posts() ) : the_post();

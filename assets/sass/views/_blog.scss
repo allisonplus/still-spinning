@@ -1,6 +1,166 @@
 //--------------------------------------------------------------
-// Blog Template (home.php)
+// Blog (home.php) & Blog Single
 //--------------------------------------------------------------
-.blog {
+.blog,
+.blog-single {
 
+	.featured-container {
+		margin: 0 auto;
+
+		@include media($tablet-landscape) {
+			margin: 0;
+		}
+	} // .featured-container
+
+	// Space above content.
+	.entry-content {
+		margin-top: 0;
+	} // .entry-content
+
+	// Entry titles.
+	.entry-title {
+		font-size: rem(30);
+		font-weight: 500;
+		letter-spacing: rem(1.6);
+		margin-bottom: rem(20);
+		margin-top: 0;
+		position: relative;
+		text-align: center;
+
+		@include media($tablet-portrait) {
+			margin-top: rem(20);
+		}
+
+		@include media($tablet-landscape) {
+			margin: 0 0 rem(12);
+		}
+
+		// Fancy line action.
+		&::after {
+			border-bottom: rem(2) solid $color-teal;
+			content: "";
+			display: block;
+			margin: 0 auto;
+			padding-bottom: rem(10);
+			width: rem(32);
+		} // &::after
+
+		// Link itself.
+		a {
+			color: $color-black;
+			text-decoration: none;
+		} // a
+	} // h2
+
+	// Other links but not the buttons.
+	.site-content a:not(.button) {
+		color: $color-teal;
+	} // a
+
+	// Meta data.
+	.entry-meta {
+		font-style: italic;
+		text-align: center;
+	} // .entry-meta
+
+	.posted-on,
+	.meta-content {
+		display: inline-block;
+		font-size: rem(15);
+	} // .posted-on, .meta-content
+
+	// Category link.
+	.category-link {
+		text-decoration: none;
+	} // .category-link
+
+	// Blog post as a whole.
+	.blog-post {
+		display: flex;
+		flex-direction: column;
+		justify-content: space-between;
+
+		@include media($tablet-landscape) {
+			flex-direction: row;
+		}
+
+		// Wrapper around title, meta-data + excerpt.
+		.blog-content {
+
+			@include media($tablet-landscape) {
+				max-width: 48%;
+			}
+
+			@include media($desktop) {
+				max-width: 58%;
+			}
+
+			// Size of type within excerpt.
+			.entry-content {
+				p {
+					font-size: rem(18);
+					margin-bottom: 0;
+				} // p
+			} // .entry-content
+		} // .blog-content
+	} // .blog-post
+
+	.button-blog {
+		font-size: rem(16);
+		max-width: rem(130);
+		padding: rem(5) rem(10);
+		// color: $color-white;
+	} // .button-blog
 } // .blog
+
+// --------------------------------------------------------------
+// Previous + Next links (the_post_navigation)
+//--------------------------------------------------------------
+.nav-links {
+	display: flex;
+	justify-content: space-between;
+	width: 100%;
+
+	p {
+		align-items: flex-start;
+	} // p
+
+	a {
+		color: $color-teal;
+	} // a
+
+	// Previous + Next.
+	.nav-previous,
+	.nav-next {
+		margin: 0;
+		padding: 0 rem(8);
+
+		&::after,
+		&::before {
+			color: $color-teal;
+			display: inline-block;
+			font-family: FontAwesome;
+		} // &::after, &::before
+	} // .nav-previous, .nav-next
+
+	// Previous.
+	.nav-previous {
+
+		// Left arrow.
+		&::before {
+			content: "\f0a8";
+			margin-right: rem(10);
+		} // &::before
+	} // .nav-previous
+
+	// Next.
+	.nav-next {
+
+		// Right arrow.
+		&::after {
+			content: "\f0a9";
+			margin-left: rem(10);
+		} // &::after
+	} // .nav-next
+} // .nav-link
+
