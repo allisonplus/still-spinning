@@ -18,12 +18,23 @@ a {
 	&:active {
 		color: $color-link-hover;
 	} // &:hover, &:focus, &:active
+
+	&.home-link {
+		color: $color-black;
+	} // &.home-link
 } // a
 
 // Default menu (active after a fresh WordPress install)
 
 .menu {
-	@include list-reset;
+	align-items: flex-start;
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	list-style-type: none;
+	margin-left: auto;
+	max-width: rem(800);
+	padding: 1% 0;
 
 	li {
 		font-size: rem(22);
@@ -31,7 +42,7 @@ a {
 
 		&:last-of-type {
 			margin: 0;
-		}
+		} // &:last-of-type
 	} // li
 
 	ul {
@@ -61,11 +72,16 @@ a {
 
 		// Sub-menu
 		ul {
+			// box-shadow: 0 3px 3px rgba($color-black, 0.2);
+			// float: left;
+			// left: -999em;
+			// position: absolute;
+			// top: em(24px);
+			// z-index: 99999;
+			@include position(absolute, rem(24) null null -999em);
+
 			box-shadow: 0 3px 3px rgba($color-black, 0.2);
 			float: left;
-			left: -999em;
-			position: absolute;
-			top: em(24px);
 			z-index: 99999;
 
 			// Sub-sub menu
@@ -88,13 +104,13 @@ a {
 				@include size(rem(200) auto);
 			} // a
 
-			:hover > a,
-			.focus > a {
-			}
+			// :hover > a,
+			// .focus > a {
+			// }
 
-			a:hover,
-			a.focus {
-			}
+			// a:hover,
+			// a.focus {
+			// }
 		} // ul
 
 		// Display sub-menu on hover
@@ -108,9 +124,9 @@ a {
 			float: left;
 			position: relative;
 
-			&:hover > a,
-			&.focus > a {
-			}
+			// &:hover > a,
+			// &.focus > a {
+			// }
 		} // li
 	} // &.dropdown
 
@@ -139,12 +155,17 @@ a {
 
 // Main navigation (after creating a menu in the dashboard)
 .main-navigation {
-	clear: both;
-	display: none;
+	// clear: both;
+	// display: none;
+	// display: none;
+	float: right;
+	position: relative;
+	text-transform: uppercase;
+	width: auto;
 
 	@include media($tablet-landscape) {
-		display: inline-block;
-		float: right;
+		// display: inline-block;
+		// float: right;
 	}
 
 	// Menu area
@@ -152,7 +173,7 @@ a {
 		display: none;
 
 		@include media($phone-landscape) {
-			display: block;
+			display: flex;
 		}
 	} // ul
 

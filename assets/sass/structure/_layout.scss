@@ -15,17 +15,10 @@
 
 .site-main {
 	margin: rem(30) 0;
+	overflow: hidden;
 	position: relative;
 	z-index: 9;
 } // .site-main
-
-.site-header {
-	padding: 0 2 * $gutter;
-
-	@include media($tablet-landscape) {
-		padding: 0;
-	}
-} // .site-header
 
 .site-footer {
 
