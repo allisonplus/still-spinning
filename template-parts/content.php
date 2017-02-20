@@ -19,7 +19,7 @@
 		endif;
 		if ( 'post' === get_post_type() ) : ?>
 		<div class="entry-meta">
-			<?php cps_posted_on(); ?>
+			<?php echo cps_single_posted_on(); // WPCS: XSS ok. ?>
 		</div><!-- .entry-meta -->
 		<?php
 		endif; ?>
