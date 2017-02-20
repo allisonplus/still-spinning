@@ -523,13 +523,41 @@ function cps_get_recent_loop() {
 }
 
 /**
- * Custom Loop for Posts
+ * Prints HTML with customized meta information single-post.
+ *
+ * @author Allison Tarr
  */
-function cps_get_about_info() {
+function cps_single_posted_on( $args = array() ) {
 
-	ob_start(); ?>
+	// Set up category stuff.
+	$category = get_the_category();
+	$category_name = '';
+	$category_link = '';
 
+	// Setup defaults.
+	$defaults = array(
+		'link'          => get_the_permalink(),
+		'date'          => get_the_date( 'F j, Y' ),
+		'category'      => $category_name,
+		'category_link' => $category_link,
+	);
 
+	// If there is an array of categories.
+	if ( is_array( $category ) ) {
+		$category_name = $category[0]->name;
+		$category_link = get_category_link( $category[0]->cat_ID );
+	}
+
+	// Parse args.
+	$args = wp_parse_args( $args, $defaults );
+
+	ob_start();
+	?>
+
+	<p class="posted-on"><time class="entry-date"><?php echo esc_attr( $args['date'] ); ?></time></p>
+		<p class="meta-content">
+			<span class="category"><span class="posted-emphasis"><?php esc_html_e( 'in ', 'cps' ); ?></span><a class="category-link" href="<?php echo esc_url( $category_link ); ?>"><?php echo esc_html( $category_name ); ?></a></span>
+		</p>
 
 	<?php
 	return ob_get_clean();
