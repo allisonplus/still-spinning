@@ -1,0 +1,16 @@
+//--------------------------------------------------------------
+// Single Quote Template
+//--------------------------------------------------------------
+.post-template-single-quote {
+
+	.entry-content {
+		display: flex;
+	} // .entry-content
+
+	.quote-container {
+
+		cite {
+			text-align: center;
+		} // cite
+	} // .quote-container
+} // post-template-single-quote
