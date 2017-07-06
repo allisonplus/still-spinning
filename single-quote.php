@@ -34,7 +34,7 @@ get_header(); ?>
 
 						<div class="entry-content">
 							<div class="featured-container">
-								<img class ="featured" src="<?php echo esc_attr( cps_get_post_image_uri( 'featured-blog' ) ); ?>" alt="<?php esc_html_e( 'Featured image for ', 'cps' ); ?><?php echo the_title(); ?>">
+								<img class ="featured" src="<?php echo esc_attr( cps_get_post_image_uri( 'book-cover' ) ); ?>" alt="<?php esc_html_e( 'Featured image for ', 'cps' ); ?><?php echo the_title(); ?>">
 							</div><!--.featured-container-->
 
 							<div class="quote-container">
@@ -49,8 +49,8 @@ get_header(); ?>
 								?>
 								</blockquote>
 
-								<a href="<?php echo esc_url( $link ); ?>"><span class="source-title"><?php echo esc_html( $title ); ?></span></a>
-								<p><cite><?php esc_html_e( '- ', 'cps' ); ?><?php echo esc_html( $author ); ?></cite></p>
+								<a class="source-title" href="<?php echo esc_url( $link ); ?>"><span><?php echo esc_html( $title ); ?></span></a>
+								<span><cite><?php esc_html_e( '~ ', 'cps' ); ?><?php echo esc_html( $author ); ?></cite></span>
 							</div><!--.quote-container-->
 
 							<?php
