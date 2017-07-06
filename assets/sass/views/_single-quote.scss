@@ -19,8 +19,11 @@
 
 	// Surrounds quote, author + title on right.
 	.quote-container {
-		padding: 0 0 0 rem(24);
 		text-align: center;
+
+		@include media($tablet-portrait) {
+			padding: 0 0 0 rem(24);
+		}
 
 		// Quote source link.
 		.source-title {
