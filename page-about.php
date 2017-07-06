@@ -15,17 +15,15 @@ get_header();  ?>
 		<div class="page-content-about">
 
 			<div class="user-photo">
-				<?php $image = get_field('user-image'); ?>
-				<img class="photo" src="<?php echo $image['sizes']['medium_large'] ?>">
+				<?php $image = get_field( 'user-image' ); ?>
+				<img class="photo" src="<?php echo esc_url( $image['sizes']['medium_large'] ); ?>">
 			</div> <!--/.user-photo-->
 
 			<div class="info">
-				<?php // Start the loop ?>
-				<?php if ( have_posts() ) while ( have_posts() ) : the_post(); ?>
-
-					<?php the_content(); ?>
-
-				<?php endwhile; // end the loop?>
+				<?php
+				while ( have_posts() ) : the_post();
+					the_content();
+				endwhile; ?>
 			</div> <!--/.info-->
 
 		</div> <!-- /.page-content-about -->
