@@ -38,7 +38,8 @@ get_header(); ?>
 							</div><!--.featured-container-->
 
 							<div class="quote-container">
-								<blockquote>
+
+								<blockquote cite="<?php echo esc_url( $link ); ?>">
 								<?php
 									the_content( sprintf(
 										/* translators: %s: Name of current post. */
@@ -49,8 +50,9 @@ get_header(); ?>
 								</blockquote>
 
 								<a href="<?php echo esc_url( $link ); ?>"><span class="source-title"><?php echo esc_html( $title ); ?></span></a>
-								<cite><?php esc_html_e( '- ', 'cps' ); ?><?php echo esc_html( $author ); ?></cite>
+								<p><cite><?php esc_html_e( '- ', 'cps' ); ?><?php echo esc_html( $author ); ?></cite></p>
 							</div><!--.quote-container-->
+
 							<?php
 								wp_link_pages( array(
 									'before' => '<div class="page-links">' . esc_html__( 'Pages:', 'cps' ),
