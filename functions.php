@@ -46,6 +46,7 @@ if ( ! function_exists( 'cps_setup' ) ) :
 
 		// Featured Blog images.
 		add_image_size( 'featured-blog', 450, 321, array( 'center', 'center' ) );
+		add_image_size( 'book-cover', 353, 450, array( 'center', 'center' ) );
 
 		// This theme uses wp_nav_menu() in one location.
 		register_nav_menus( array(
