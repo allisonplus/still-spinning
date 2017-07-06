@@ -16,7 +16,7 @@ get_header();  ?>
 
 			<div class="user-photo">
 				<?php $image = get_field('user-image'); ?>
-				<img class="photo" src="<?php echo $image['sizes']['highlighted'] ?>">
+				<img class="photo" src="<?php echo $image['sizes']['medium_large'] ?>">
 			</div> <!--/.user-photo-->
 
 			<div class="info">
