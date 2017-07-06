@@ -5,12 +5,30 @@
 
 	.entry-content {
 		display: flex;
+		flex-direction: column;
+
+		@include media($tablet-portrait) {
+			flex-direction: row;
+		}
 	} // .entry-content
 
-	.quote-container {
+	// Quote featured image.
+	.featured-container {
+		font-size: 0; // ghost-space killah
+	} // .featured-container
 
-		cite {
-			text-align: center;
-		} // cite
+	// Surrounds quote, author + title on right.
+	.quote-container {
+		padding: 0 0 0 rem(24);
+		text-align: center;
+
+		// Quote source link.
+		.source-title {
+
+			&:hover {
+				color: $color-link-hover;
+				text-decoration: underline;
+			} // &:hover
+		} // .source-title
 	} // .quote-container
 } // post-template-single-quote
