@@ -5,6 +5,7 @@
 .blog-single {
 
 	.featured-container {
+		font-size: 0; // ghost-space killah.
 		margin: 0 auto;
 
 		@include media($tablet-landscape) {
@@ -12,10 +13,20 @@
 		}
 	} // .featured-container
 
-	// Space above content.
+	// Space around content (single).
 	.entry-content {
 		margin-top: 0;
 	} // .entry-content
+
+	// Space around content.
+	.blog-content {
+		margin-top: rem(16);
+
+		@include media($tablet-portrait) {
+			margin-top: 0;
+			padding: 0 0 0 rem(24);
+		}
+	} // .blog-content
 
 	// Entry titles.
 	.entry-title {
@@ -86,13 +97,14 @@
 
 		// Wrapper around title, meta-data + excerpt.
 		.blog-content {
+			flex: 1;
 
 			@include media($tablet-landscape) {
-				max-width: 48%;
+				// max-width: 48%;
 			}
 
 			@include media($desktop) {
-				max-width: 58%;
+				// max-width: 58%;
 			}
 
 			// Size of type within excerpt.
