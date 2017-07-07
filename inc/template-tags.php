@@ -449,9 +449,9 @@ function cps_get_footer_social_links() {
 
 	<?php // Continue <li>'s with rest of social networks provided. ?>
 	<?php foreach ( $social_networks as $network ) : ?>
-		<li class="social-network <?php echo $network; ?>">
+		<li class="social-network <?php echo esc_attr( $network ); ?>">
 			<a href="<?php echo esc_url( get_theme_mod( 'cps_' . $network . '_link' ) ); ?>">
-				<?php echo cps_get_svg( array( 'icon' => $network . '-social', 'title' => $network . '' ) ); ?>
+				<?php echo cps_get_svg( array( 'icon' => $network . '-social', 'title' => $network . '' ) ); // WPCS: XSS ok. ?>
 			</a>
 		</li>
 	<?php endforeach; ?>
@@ -494,7 +494,7 @@ function cps_get_recent_loop() {
 					<span class="entry-cat" id="entry-cat">
 						<?php
 						$category = get_the_category();
-						if( $category[0] ){
+						if ( $category[0] ) {
 							echo '<a href="' . get_category_link( $category[0]->term_id ).'">' . $category[0]->cat_name . '</a>';
 						} ?>
 					</span>
@@ -562,3 +562,23 @@ function cps_single_posted_on( $args = array() ) {
 	<?php
 	return ob_get_clean();
 }
+
+/**
+ * Displays Custom Image Sizes in Media Gallery
+ *
+ * @param  string $sizes  Image sizes.
+ * @author Allison Tarr
+ */
+function cps_display_custom_img_sizes( $sizes ) {
+	global $_wp_additional_image_sizes;
+	if ( empty( $_wp_additional_image_sizes ) )
+	return $sizes;
+
+	foreach ( $_wp_additional_image_sizes as $id => $data ) {
+	if ( !isset($sizes[$id] ) )
+		$sizes[$id] = ucfirst( str_replace( '-', ' ', $id ) );
+	}
+
+	return $sizes;
+}
+add_filter( 'image_size_names_choose', 'cps_display_custom_img_sizes' );
