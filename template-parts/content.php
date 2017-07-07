@@ -23,6 +23,7 @@
 		</div><!-- .entry-meta -->
 		<?php
 		endif; ?>
+		<?php cps_entry_footer(); ?>
 	</header><!-- .entry-header -->
 
 	<div class="entry-content">
@@ -39,8 +40,4 @@
 			) );
 		?>
 	</div><!-- .entry-content -->
-
-	<footer class="entry-footer">
-		<?php cps_entry_footer(); ?>
-	</footer><!-- .entry-footer -->
 </article><!-- #post-## -->

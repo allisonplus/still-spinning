@@ -4,13 +4,9 @@
 
 // Structure.
 .wrap {
-	@include outer-container;
+	@include outer-container(1400px);
 
 	padding: 0 2 * $gutter;
-
-	@include media($desktop) {
-		padding: 0;
-	}
 } // .wrap
 
 .site-main {
@@ -26,14 +22,6 @@
 		padding: 0 2 * $gutter;
 	}
 } // .site-footer
-
-.site-content {
-
-	// Wrap inside site-content less wide.
-	> .wrap {
-		// max-width: rem(900);
-	} // .wrap
-} // .site-content
 
 .primary {
 	@include fill-parent;
