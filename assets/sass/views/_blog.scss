@@ -24,7 +24,7 @@
 	// Entry titles.
 	.entry-title {
 		font-size: rem(30);
-		font-weight: 500;
+		font-weight: 700;
 		letter-spacing: rem(1.6);
 		margin-bottom: rem(20);
 		margin-top: 0;
@@ -43,6 +43,7 @@
 			border-bottom: rem(2) solid $color-teal;
 			content: "";
 			display: block;
+			margin-bottom: $gutter;
 			padding-bottom: rem(10);
 			width: rem(32);
 		} // &::after
@@ -56,13 +57,20 @@
 
 	// Meta data.
 	.entry-meta {
+		font-size: rem(18);
 		font-style: italic;
 	} // .entry-meta
+
+	// Categories
+	.cat-links {
+		font-size: rem(18);
+		margin-bottom: $gutter;
+	} // .cat-links
 
 	.posted-on,
 	.meta-content {
 		display: inline-block;
-		font-size: rem(15);
+		margin-bottom: $gutter / 2;
 	} // .posted-on, .meta-content
 
 	// Category link.
@@ -71,9 +79,12 @@
 	} // .category-link
 } // .blog
 
+
+//--------------------------------------------------------------
+// Blog Content
+//--------------------------------------------------------------
 .blog,
-.single-post,
-.blog-single {
+.single-post {
 
 	.featured-container {
 		font-size: 0; // ghost-space killah.
@@ -84,18 +95,21 @@
 		}
 	} // .featured-container
 
-	// Space around content (single).
-	.entry-content {
-		margin-top: 0;
-	} // .entry-content
-
-	// Space around content.
 	.blog-content {
+		flex: 1;
 		margin-top: rem(16);
+
+		// Size of type within excerpt.
+		.entry-content {
+			p {
+				font-size: rem(18);
+				margin-bottom: 0;
+			} // p
+		} // .entry-content
 
 		@include media($tablet-portrait) {
 			margin-top: 0;
-			padding: 0 0 0 rem(24);
+			padding: 0 0 0 rem(42);
 		}
 	} // .blog-content
 
@@ -111,21 +125,9 @@
 		justify-content: space-between;
 
 		@include media($tablet-landscape) {
+			align-items: center;
 			flex-direction: row;
 		}
-
-		// Wrapper around title, meta-data + excerpt.
-		.blog-content {
-			flex: 1;
-
-			// Size of type within excerpt.
-			.entry-content {
-				p {
-					font-size: rem(18);
-					margin-bottom: 0;
-				} // p
-			} // .entry-content
-		} // .blog-content
 	} // .blog-post
 
 	.button-blog {
@@ -141,19 +143,35 @@
 //--------------------------------------------------------------
 .blog-single {
 
+	// Header + Content.
 	article {
 		display: flex;
+		flex-direction: column;
+		justify-content: space-between;
+
+		@include media($tablet-landscape) {
+			flex-direction: row;
+		}
 	} // article
 
-	.entry-content {
-		width: 70%;
-	} // .entry-content
-
+	// Title + meta-data.
 	.entry-header {
 		display: flex;
 		flex-direction: column;
-		width: 30%;
+
+		@include media($tablet-landscape) {
+			width: 35%;
+		}
 	} // .entry-header
+
+	// Content.
+	.entry-content {
+
+		@include media($tablet-landscape) {
+			margin-top: 0;
+			width: 60%;
+		}
+	} // .entry-content
 } // .blog-single
 
 

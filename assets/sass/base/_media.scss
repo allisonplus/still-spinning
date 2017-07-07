@@ -22,7 +22,18 @@
 img {
 	height: auto;
 	max-width: 100%;
-}
+} // img
+
+.size-half {
+
+	@include media($phone-landscape) {
+		width: 50%;
+	}
+
+	@include media($desktop) {
+		width: initial;
+	}
+} // .size-half
 
 // --------------------------------------------------------------
 // Captions
@@ -61,7 +72,7 @@ img {
 // Image caption text
 .wp-caption-text {
 	text-align: center;
-} // .wp-caption-text 
+} // .wp-caption-text
 
 // --------------------------------------------------------------
 // Galleries
@@ -154,4 +165,4 @@ img {
 // svg defs
 .svg-defs {
 	display: none;
-} // .svg-defs 
+} // .svg-defs
