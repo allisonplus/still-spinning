@@ -64,16 +64,6 @@ if ( ! function_exists( 'cps_entry_footer' ) ) :
 			comments_popup_link( esc_html__( 'Leave a comment', 'cps' ), esc_html__( '1 Comment', 'cps' ), esc_html__( '% Comments', 'cps' ) );
 			echo '</span>';
 		}
-
-		edit_post_link(
-			sprintf(
-				/* translators: %s: Name of current post */
-				esc_html__( 'Edit %s', 'cps' ),
-				the_title( '<span class="screen-reader-text">"', '"</span>', false )
-			),
-			'<span class="edit-link">',
-			'</span>'
-		);
 	}
 endif;
 
@@ -575,6 +565,7 @@ function cps_display_custom_img_sizes( $sizes ) {
 	return $sizes;
 
 	foreach ( $_wp_additional_image_sizes as $id => $data ) {
+
 	if ( !isset($sizes[$id] ) )
 		$sizes[$id] = ucfirst( str_replace( '-', ' ', $id ) );
 	}
