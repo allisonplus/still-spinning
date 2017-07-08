@@ -3,27 +3,33 @@
 //--------------------------------------------------------------
 .post-template-single-quote {
 
-	.entry-content {
-		display: flex;
-		flex-direction: column;
-
-		@include media($tablet-portrait) {
-			flex-direction: row;
-		}
-	} // .entry-content
-
 	// Quote featured image.
 	.featured-container {
 		font-size: 0; // ghost-space killah
+		text-align: center;
+
+		@include media($tablet-landscape) {
+			margin: rem(32) 0;
+		}
 	} // .featured-container
+
+	blockquote {
+		margin: 0;
+	} // blockquote
 
 	// Surrounds quote, author + title on right.
 	.quote-container {
+		position: relative;
 		text-align: center;
 
-		@include media($tablet-portrait) {
-			padding: 0 0 0 rem(24);
-		}
+		// Decorate quote mark.
+		&:before {
+			@include position(absolute, -10px null null 48%);
+
+			content: "\201C" ;
+			font-family: serif;
+			font-size: rem(99);
+		} // &:before
 
 		// Quote source link.
 		.source-title {

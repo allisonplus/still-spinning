@@ -21,46 +21,46 @@ get_header(); ?>
 
 			<?php while ( have_posts() ) : the_post(); ?>
 
-				<article <?php post_class( 'blog-post' ); ?>>
+				<article <?php post_class(); ?>>
 
-					<div class="blog-content-quote">
-						<header class="entry-header">
-							<?php the_title( '<h1 class="entry-title">', '</h1>' ); ?>
+					<header class="entry-header">
+						<?php the_title( '<h1 class="entry-title">', '</h1>' ); ?>
 
-							<div class="entry-meta">
-								<?php echo cps_single_posted_on(); // WPCS: XSS ok. ?>
-							</div><!-- .entry-meta -->
-						</header><!-- .entry-header -->
+						<div class="entry-meta">
+							<?php echo cps_single_posted_on(); // WPCS: XSS ok. ?>
+						</div><!-- .entry-meta -->
 
-						<div class="entry-content">
-							<div class="featured-container">
-								<img class ="featured" src="<?php echo esc_attr( cps_get_post_image_uri( 'book-cover' ) ); ?>" alt="<?php esc_html_e( 'Featured image for ', 'cps' ); ?><?php echo the_title(); ?>">
-							</div><!--.featured-container-->
 
-							<div class="quote-container">
+					</header><!-- .entry-header -->
 
-								<blockquote cite="<?php echo esc_url( $link ); ?>">
-								<?php
-									the_content( sprintf(
-										/* translators: %s: Name of current post. */
-										wp_kses( __( 'Continue reading %s <span class="meta-nav">&rarr;</span>', 'cps' ), array( 'span' => array( 'class' => array() ) ) ),
-										the_title( '<span class="screen-reader-text">"', '"</span>', false )
-									) );
-								?>
-								</blockquote>
+					<div class="entry-content">
 
-								<a class="source-title" href="<?php echo esc_url( $link ); ?>"><span><?php echo esc_html( $title ); ?></span></a>
-								<span><cite><?php esc_html_e( '~ ', 'cps' ); ?><?php echo esc_html( $author ); ?></cite></span>
-							</div><!--.quote-container-->
-
+						<div class="quote-container">
+							<blockquote cite="<?php echo esc_url( $link ); ?>">
 							<?php
-								wp_link_pages( array(
-									'before' => '<div class="page-links">' . esc_html__( 'Pages:', 'cps' ),
-									'after'  => '</div>',
+								the_content( sprintf(
+									/* translators: %s: Name of current post. */
+									wp_kses( __( 'Continue reading %s <span class="meta-nav">&rarr;</span>', 'cps' ), array( 'span' => array( 'class' => array() ) ) ),
+									the_title( '<span class="screen-reader-text">"', '"</span>', false )
 								) );
 							?>
-						</div><!-- .entry-content -->
-					</div><!--/.blog-content-->
+							</blockquote>
+
+							<a class="source-title" href="<?php echo esc_url( $link ); ?>"><span><?php echo esc_html( $title ); ?></span></a>
+							<span><cite><?php esc_html_e( '~ ', 'cps' ); ?><?php echo esc_html( $author ); ?></cite></span>
+						</div><!--.quote-container-->
+
+						<div class="featured-container">
+							<img class ="featured" src="<?php echo esc_attr( cps_get_post_image_uri( 'book-cover' ) ); ?>" alt="<?php esc_html_e( 'Featured image for ', 'cps' ); ?><?php echo the_title(); ?>">
+						</div><!--.featured-container-->
+
+						<?php
+							wp_link_pages( array(
+								'before' => '<div class="page-links">' . esc_html__( 'Pages:', 'cps' ),
+								'after'  => '</div>',
+							) );
+						?>
+					</div><!-- .entry-content -->
 				</article><!-- #post-## -->
 
 				<?php the_post_navigation();
@@ -75,8 +75,6 @@ get_header(); ?>
 
 			</main><!-- #main -->
 		</div><!-- .primary -->
-
-		<?php get_sidebar(); ?>
 
 	</div><!-- .wrap -->
 

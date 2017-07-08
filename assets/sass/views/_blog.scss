@@ -29,6 +29,7 @@
 		margin-bottom: rem(20);
 		margin-top: 0;
 		position: relative;
+		text-align: center;
 
 		@include media($tablet-portrait) {
 			margin-top: rem(20);
@@ -36,6 +37,7 @@
 
 		@include media($tablet-landscape) {
 			margin: 0 0 rem(12);
+			text-align: left;
 		}
 
 		// Fancy line action.
@@ -43,9 +45,13 @@
 			border-bottom: rem(2) solid $color-teal;
 			content: "";
 			display: block;
-			margin-bottom: $gutter;
+			margin: 0 auto $gutter;
 			padding-bottom: rem(10);
 			width: rem(32);
+
+			@include media($tablet-landscape) {
+				margin: 0 0 $gutter;
+			}
 		} // &::after
 
 		// Link itself.
@@ -54,6 +60,15 @@
 			text-decoration: none;
 		} // a
 	} // h2.entry-title
+
+	.entry-meta,
+	.cat-links {
+		text-align: center;
+
+		@include media($tablet-landscape) {
+			text-align: left;
+		}
+	} // .entry-meta, .cat-links
 
 	// Meta data.
 	.entry-meta {
@@ -107,7 +122,7 @@
 			} // p
 		} // .entry-content
 
-		@include media($tablet-portrait) {
+		@include media($tablet-landscape) {
 			margin-top: 0;
 			padding: 0 0 0 rem(42);
 		}
@@ -225,33 +240,3 @@
 		} // &::after
 	} // .nav-next
 } // .nav-link
-
-
-// -------------------------------------------------------------
-// Blockquote Styling
-//--------------------------------------------------------------
-blockquote {
-	font-style: italic;
-	line-height: 1.5;
-	padding-top: 6rem;
-	position: relative;
-	text-align: center;
-
-	&::before {
-		@include position(absolute, 2.5rem null null 0);
-
-		border-top: 1px solid $color-black;
-		content: "";
-		height: rem(1);
-		width: 40%;
-	} // &::before
-
-	&::after {
-		@include position(absolute, 2.5rem 0 null null);
-
-		border-top: 1px solid $color-black;
-		content: "";
-		height: rem(1);
-		width: 40%;
-	} // &::after
-} // blockquote
