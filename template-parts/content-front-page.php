@@ -9,21 +9,38 @@
 
 ?>
 
-<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
+<section class="recent-post-container">
 
-	<?php
-	if ( is_front_page() ) {
-		echo '<h2>' . get_the_title() . '</h2>';
-	} ?>
+	<?php $recent_posts = cps_get_recent_posts(); ?>
 
-	<div class="entry-content">
-		<?php
-			the_content();
+	<?php while ( $recent_posts->have_posts() ) : $recent_posts->the_post(); ?>
 
-			wp_link_pages( array(
-				'before' => '<div class="page-links">' . esc_html__( 'Pages:', 'cps' ),
-				'after'  => '</div>',
-			) );
-		?>
-	</div><!-- .entry-content -->
-</article><!-- #post-## -->
+	<article id="post-<?php the_ID(); ?>" <?php post_class( 'recent-post' ); ?>>
+
+		<div class="featured-container"><img class ="featured" src="<?php echo esc_attr( cps_get_post_image_uri( 'featured-blog' ) ); ?>" alt="<?php esc_html_e( 'Featured image for ', 'cps' ); ?><?php echo the_title(); ?>"></div><!-- .featured-container -->
+
+		<div class="post-info">
+			<div class="meta-data">
+				<span class="post-category">
+					<?php
+					$category = get_the_category();
+
+					if ( $category[0] ) {
+						echo '<a href="' . get_category_link( $category[0]->term_id ) . '">' . $category[0]->cat_name . '</a>'; // WPCS: XSS ok.
+					} ?>
+				</span>
+				<span class="entry-date"><i class="fa fa-clock-o"></i><?php the_date( 'F jS, Y', '<p>', '</p>' ); ?></span>
+
+			</div> <!--/.meta-data-->
+				<h2 class="recent-post-title">
+				<a href="<?php the_permalink(); ?>" title="Permalink to: <?php esc_attr( the_title_attribute() ); ?>" rel="bookmark">
+					<?php the_title(); ?>
+				</a>
+			</h2>
+		</div> <!--/.post-info-->
+
+	</article><!-- #post-## -->
+
+	<?php endwhile;
+	wp_reset_postdata(); ?>
+</section>
