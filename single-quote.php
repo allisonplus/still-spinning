@@ -24,12 +24,12 @@ get_header(); ?>
 				<article <?php post_class(); ?>>
 
 					<header class="entry-header">
-						<?php the_title( '<h1 class="entry-title">', '</h1>' ); ?>
+						<h1 class="entry-title"><?php echo esc_html( $title ); ?></h1>
+						<span class="author"><cite><?php esc_html_e( 'Author: ', 'cps' ); ?><?php echo esc_html( $author ); ?></cite></span></h1>
 
 						<div class="entry-meta">
 							<?php echo cps_single_posted_on(); // WPCS: XSS ok. ?>
 						</div><!-- .entry-meta -->
-
 
 					</header><!-- .entry-header -->
 
@@ -45,13 +45,10 @@ get_header(); ?>
 								) );
 							?>
 							</blockquote>
-
-							<a class="source-title" href="<?php echo esc_url( $link ); ?>"><span><?php echo esc_html( $title ); ?></span></a>
-							<span><cite><?php esc_html_e( '~ ', 'cps' ); ?><?php echo esc_html( $author ); ?></cite></span>
 						</div><!--.quote-container-->
 
 						<div class="featured-container">
-							<img class ="featured" src="<?php echo esc_attr( cps_get_post_image_uri( 'book-cover' ) ); ?>" alt="<?php esc_html_e( 'Featured image for ', 'cps' ); ?><?php echo the_title(); ?>">
+						<a class="source-title" href="<?php echo esc_url( $link ); ?>"><img class ="featured" src="<?php echo esc_attr( cps_get_post_image_uri( 'book-cover' ) ); ?>" alt="<?php esc_html_e( 'Featured image for ', 'cps' ); ?><?php echo the_title(); ?>"></a>
 						</div><!--.featured-container-->
 
 						<?php

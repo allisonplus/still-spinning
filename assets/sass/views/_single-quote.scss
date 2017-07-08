@@ -5,17 +5,29 @@
 
 	// Quote featured image.
 	.featured-container {
-		font-size: 0; // ghost-space killah
 		text-align: center;
 
 		@include media($tablet-landscape) {
 			margin: rem(32) 0;
 		}
+
+		.source-title {
+			display: inline-block;
+		} // .source-title
 	} // .featured-container
 
 	blockquote {
 		margin: 0;
 	} // blockquote
+
+	.entry-header {
+
+		.author {
+			display: block;
+			font-size: rem(18);
+			margin-bottom: $gutter;
+		} // span
+	} // .entry-header
 
 	// Surrounds quote, author + title on right.
 	.quote-container {
@@ -31,13 +43,13 @@
 			font-size: rem(99);
 		} // &:before
 
-		// Quote source link.
-		.source-title {
+		// // Quote source link.
+		// .source-title {
 
-			&:hover {
-				color: $color-link-hover;
-				text-decoration: underline;
-			} // &:hover
-		} // .source-title
+		// 	&:hover {
+		// 		color: $color-link-hover;
+		// 		text-decoration: underline;
+		// 	} // &:hover
+		// } // .source-title
 	} // .quote-container
 } // post-template-single-quote
