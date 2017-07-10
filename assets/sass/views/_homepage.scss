@@ -1,12 +1,35 @@
 // //--------------------------------------------------------------
 // // Homepage Template
 // //--------------------------------------------------------------
-.recent-post {
+.recent-post-container,
+.category-post-container {
+	display: flex;
+	flex-wrap: wrap;
+	font-size: 0;
+
+	@include media($tablet-portrait) {
+		flex-direction: row;
+	}
+} // .recent-post-container
+
+
+// //--------------------------------------------------------------
+// // Single Post (Applicable on both homepage + archive/category)
+// //--------------------------------------------------------------
+.loop-single-post {
 	display: inline-block;
-	margin-bottom: 0;
 	position: relative;
-	width: calc(100% / 3.02);
 	z-index: 1;
+
+	@include media($tablet-portrait) {
+		margin-bottom: 0;
+		width: calc(100% / 3);
+	}
+
+	// Last recent post.
+	&:last-of-type {
+		margin-bottom: 0;
+	} // &:last-of-type
 
 	&:after {
 		@include position(absolute, 0 0 null null);
@@ -18,7 +41,7 @@
 	} // &:after
 
 	// Post text info.
-	.recent-post-title,
+	.single-post-title,
 	.post-categories,
 	.entry-meta {
 		z-index: 10;
@@ -27,38 +50,49 @@
 	// <img> container.
 	.featured-container {
 		font-size: 0; // ghost-space killah.
-	}
+	} // .featured-container
 
 	// Title.
-	.recent-post-title {
+	.single-post-title {
+		font-family: "Droid Sans", sans-serif;
+		font-size: rem(18);
+		font-weight: 400;
+		letter-spacing: rem(1.2);
 		margin: 0;
 
-		// Link.
+		@include media($tablet-landscape) {
+			font-size: rem(28);
+			line-height: rem(35);
+		}
+
 		a {
 			color: $color-white;
-			font-family: "Droid Sans", sans-serif;
-			font-size: rem(28);
-			font-weight: 400;
-			letter-spacing: rem(1.2);
-			line-height: rem(35);
 		} // a
 	} // .recent-post-title
 
 	.post-info {
-		@include position(absolute, 50% null null 20px);
+		@include position(absolute, 20px null null rem(22));
 
 		font-size: rem(14);
-		transform: translateY(-50%);
 		z-index: 10;
+
+		@include media($desktop) {
+			@include position(absolute, rem(80) null null rem(22));
+		}
 	} // .post-info
 
 	// Category.
 	.post-category {
 		background: $color-whitesmoke;
 		display: inline-block;
+		margin-bottom: rem(12);
 		margin-right: rem(35);
 		padding: rem(6);
 		transform: skew(-20deg);
+
+		@include media($tablet-landscape) {
+			margin-bottom: 0;
+		}
 
 		// Category link.
 		a {
@@ -66,7 +100,6 @@
 			display: inline-block;
 			font-size: 14px;
 			letter-spacing: 1.2px;
-			line-height: rem(30);
 			margin-left: rem(8);
 			position: relative;
 			text-transform: uppercase;
@@ -83,16 +116,17 @@
 	// Date.
 	.entry-date {
 		color: $color-white;
-		font-weight: 700;
+		display: block;
 		letter-spacing: rem(1.2);
 		margin-bottom: rem(10);
 		text-transform: uppercase;
 
 		p {
 			display: inline-block;
+			margin: 0;
 		} // p
 	} // .entry-meta
-} // .recent-post
+} // .loop-single-post
 
 // Clock symbol.
 .fa-clock-o {
