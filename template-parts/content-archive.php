@@ -1,6 +1,6 @@
 <?php
 /**
- * Template part for displaying front page.
+ * Template part for displaying archive posts loop.
  *
  * @link https://codex.wordpress.org/Template_Hierarchy
  *
@@ -9,13 +9,7 @@
 
 ?>
 
-<section class="recent-post-container">
-
-	<?php $recent_posts = cps_get_recent_posts(); ?>
-
-	<?php while ( $recent_posts->have_posts() ) : $recent_posts->the_post(); ?>
-
-	<article id="post-<?php the_ID(); ?>" <?php post_class( 'recent-post' ); ?>>
+	<article id="post-<?php the_ID(); ?>" <?php post_class( 'loop-single-post' ); ?>>
 
 		<div class="featured-container"><img class ="featured" src="<?php echo esc_attr( cps_get_post_image_uri( 'featured-blog' ) ); ?>" alt="<?php esc_html_e( 'Featured image for ', 'cps' ); ?><?php echo the_title(); ?>"></div><!-- .featured-container -->
 
@@ -32,15 +26,8 @@
 				<span class="entry-date"><i class="fa fa-clock-o"></i><?php the_date( 'F jS, Y', '<p>', '</p>' ); ?></span>
 
 			</div> <!--/.meta-data-->
-				<h2 class="recent-post-title">
-				<a href="<?php the_permalink(); ?>" title="Permalink to: <?php esc_attr( the_title_attribute() ); ?>" rel="bookmark">
-					<?php the_title(); ?>
-				</a>
-			</h2>
+				<h2 class="single-post-title"><a href="<?php the_permalink(); ?>" title="Permalink to: <?php esc_attr( the_title_attribute() ); ?>" rel="bookmark">
+					<?php the_title(); ?></a></h2>
 		</div> <!--/.post-info-->
 
 	</article><!-- #post-## -->
-
-	<?php endwhile;
-	wp_reset_postdata(); ?>
-</section>
