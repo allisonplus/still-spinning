@@ -41,3 +41,40 @@ function cps_get_archive_posts( $cat_id ) {
 		'paged'                  => $paged,
 	) );
 }
+
+/**
+ * Get related posts.
+ *
+ * @param  int $post_id Post ID.
+ * @param  int $related_count How many posts to return.
+ * @return WP_Query Related Posts.
+ */
+function cps_get_related_posts( $post_id, $related_count = 2 ) {
+
+	$terms = get_the_terms( $post_id, 'category' );
+
+	if ( empty( $terms ) ) {
+		$terms = array();
+	}
+
+	$term_list = wp_list_pluck( $terms, 'slug' );
+
+	$related_args = array(
+		'post_type'      => 'post',
+		'posts_per_page' => $related_count,
+		'post__not_in'   => array( $post_id ),
+		'orderby'        => 'rand',
+		'no_found_rows'          => true,
+		'update_post_meta_cache' => false,
+		'update_post_term_cache' => false,
+		'tax_query'      => array(
+			array(
+				'taxonomy' => 'category',
+				'field'    => 'slug',
+				'terms'    => $term_list,
+			),
+		),
+	);
+
+	return new WP_Query( $related_args );
+}
