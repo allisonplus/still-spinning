@@ -18,6 +18,8 @@ get_header(); ?>
 
 				get_template_part( 'template-parts/content', get_post_format() );
 
+				echo cps_show_related_posts(); // WPCS: XSS ok.
+
 				the_post_navigation();
 
 				// If comments are open or we have at least one comment, load up the comment template.

@@ -562,5 +562,4 @@ function cps_show_related_posts() {
 	wp_reset_postdata(); ?>
 
 	<?php
-
 }
