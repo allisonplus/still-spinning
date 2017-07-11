@@ -113,13 +113,13 @@ add_action( 'save_post',     'cps_category_transient_flusher' );
 /**
  * Return SVG markup.
  *
- * @param  array  $args {
+ * @param  array $args {
  *     Parameters needed to display an SVG.
  *
- *     @param string $icon Required. Use the icon filename, e.g. "facebook-square".
- *     @param string $title Optional. SVG title, e.g. "Facebook".
- *     @param string $desc Optional. SVG description, e.g. "Share this post on Facebook".
- * }
+ *     string $icon Required. Use the icon filename, e.g. "facebook-square".
+ *     string $title Optional. SVG title, e.g. "Fac
+ *     string $desc Optional. SVG description, e.g. "Share this post on Facebook".
+ * }.
  * @return string SVG markup.
  */
 function cps_get_svg( $args = array() ) {
@@ -346,7 +346,8 @@ function cps_do_copyright_text() {
 	}
 
 	// Echo the text.
-	echo '<span class="copyright-text">	&#169;' . ' ' . wp_kses_post( $copyright_text ) . ' ' . date( 'Y' ) . '</span>';
+	echo '<span class="copyright-text">	&#169; ' . wp_kses_post( $copyright_text ) . ' ' . date( 'Y' ) . '</span>'; // WPCS: XSS ok.
+
 }
 
 /**
@@ -401,7 +402,7 @@ function cps_do_mobile_navigation_menu() {
 	?>
 
 	<nav id="mobile-menu" class="mobile-nav-menu">
-		<button class="close-mobile-menu"><span class="screen-reader-text"><?php _e( 'Close menu', 'cps' ); ?></span><?php cps_do_svg( array( 'icon' => 'close' ) ); ?></button>
+		<button class="close-mobile-menu"><span class="screen-reader-text"><?php esc_html_e( 'Close menu', 'cps' ); ?></span><?php cps_do_svg( array( 'icon' => 'close' ) ); ?></button>
 		<?php
 			wp_nav_menu( array(
 				'theme_location' => $mobile_menu,
@@ -475,7 +476,7 @@ function cps_get_recent_loop() {
 		?>
 		<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 
-			<div class="photo-highlighted" style="background-image:url(<?= $thumb_url ?>)"></div> <!--/photo-highlighted-->
+			<div class="photo-highlighted" style="background-image:url(<?php echo esc_url( $thumb_url ); ?>)"></div> <!--/photo-highlighted-->
 
 			<a class="post-link" href="<?php the_permalink(); ?>" title="Permalink to: <?php esc_attr( the_title_attribute() ); ?>" rel="bookmark"></a>
 
@@ -485,7 +486,7 @@ function cps_get_recent_loop() {
 						<?php
 						$category = get_the_category();
 						if ( $category[0] ) {
-							echo '<a href="' . get_category_link( $category[0]->term_id ).'">' . $category[0]->cat_name . '</a>';
+							echo '<a href="' . get_category_link( $category[0]->term_id ) . '">' . $category[0]->cat_name . '</a>'; // WPCS: XSS ok.
 						} ?>
 					</span>
 					<span class="entry-date"><i class="fa fa-clock-o"></i><?php the_date( 'F jS, Y', '<p>', '</p>' ); ?></span>
@@ -516,6 +517,7 @@ function cps_get_recent_loop() {
  * Prints HTML with customized meta information single-post.
  *
  * @author Allison Tarr
+ * @param   array $args Potential args to pass.
  */
 function cps_single_posted_on( $args = array() ) {
 
@@ -561,13 +563,14 @@ function cps_single_posted_on( $args = array() ) {
  */
 function cps_display_custom_img_sizes( $sizes ) {
 	global $_wp_additional_image_sizes;
-	if ( empty( $_wp_additional_image_sizes ) )
-	return $sizes;
+	if ( empty( $_wp_additional_image_sizes ) ) {
+		return $sizes;
+	}
 
 	foreach ( $_wp_additional_image_sizes as $id => $data ) {
-
-	if ( !isset($sizes[$id] ) )
-		$sizes[$id] = ucfirst( str_replace( '-', ' ', $id ) );
+		if ( ! isset( $sizes[ $id ] ) ) {
+			$sizes[ $id ] = ucfirst( str_replace( '-', ' ', $id ) );
+		}
 	}
 
 	return $sizes;
