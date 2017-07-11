@@ -26,7 +26,7 @@
 		width: calc(100% / 3);
 	}
 
-	// Last recent post.
+	// Last post in list.
 	&:last-of-type {
 		margin-bottom: 0;
 	} // &:last-of-type
@@ -45,7 +45,7 @@
 	.post-categories,
 	.entry-meta {
 		z-index: 10;
-	} // 	.recent-post-title, .post-categories, .entry-meta
+	} // .single-post-title, .post-categories, .entry-meta
 
 	// <img> container.
 	.featured-container {
@@ -68,7 +68,7 @@
 		a {
 			color: $color-white;
 		} // a
-	} // .recent-post-title
+	} // .single-post-title
 
 	.post-info {
 		@include position(absolute, 20px null null rem(22));

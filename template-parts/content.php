@@ -24,6 +24,8 @@
 		<?php
 		endif; ?>
 		<?php cps_entry_footer(); ?>
+
+		<?php echo cps_show_related_posts(); // WPCS: XSS ok. ?>
 	</header><!-- .entry-header -->
 
 	<div class="entry-content">
