@@ -21,7 +21,7 @@ get_header(); ?>
 			<?php
 			while ( have_posts() ) : the_post();
 
-				get_template_part( 'template-parts/content', 'recent-posts' );
+				cps_show_recent_posts(); // WPCS: XSS ok.
 
 			endwhile; // End of the loop.
 			?>

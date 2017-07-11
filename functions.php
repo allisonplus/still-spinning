@@ -145,6 +145,11 @@ require get_template_directory() . '/inc/extras.php';
 require get_template_directory() . '/inc/queries.php';
 
 /**
+ * Load custom loops.
+ */
+require get_template_directory() . '/inc/loops.php';
+
+/**
  * Customizer additions.
  */
 require get_template_directory() . '/inc/customizer.php';
