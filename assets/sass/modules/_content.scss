@@ -43,7 +43,21 @@
 .entry-content,
 .entry-summary {
 	margin: rem(24) 0 0;
+
+	// Content on 404 page.
+	.error-404 & {
+		text-align: center;
+	} // .error-404 &
 } // .page-content, .entry-content, .entry-summary
+
+// Page header
+.page-header {
+
+	// Header on 404 page.
+	.error-404 & {
+		text-align: center;
+	} // .error-404 &
+} // .page-header
 
 // Page links
 .page-links {

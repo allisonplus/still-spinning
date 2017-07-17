@@ -15,11 +15,12 @@ get_header(); ?>
 
 				<section class="error-404 not-found">
 					<header class="page-header">
-						<h1 class="page-title"><?php esc_html_e( 'Sorry, this page doesn\'t exist.', 'cps' ); ?></h1>
+						<h1 class="page-title"><?php esc_html_e( 'Uh oh. These aren\'t the droids you\'re looking for.', 'cps' ); ?></h1>
 					</header><!-- .page-header -->
 
 					<div class="page-content">
 
+						<img src="<?php echo esc_url( get_stylesheet_directory_uri() ); ?>/assets/images/droids.png" alt="Several Star Wars r2 units">
 						<p><?php esc_html_e( 'It seems we can’t find what you’re looking for. Perhaps searching can help.', 'cps' ); ?></p>
 
 						<?php get_search_form(); ?>
