@@ -418,7 +418,7 @@ function cps_get_footer_social_links() {
 
 	// Set an array of social networks.
 	$social_networks = array( 'twitter', 'instagram', 'vimeo', 'pinterest' );
-	$email = get_theme_mod( 'cps_email_link' );
+	$email = get_theme_mod( 'cps_email' );
 
 	ob_start(); ?>
 
@@ -427,7 +427,7 @@ function cps_get_footer_social_links() {
 	<?php // If there's no email, don't make this <li> in the first place .?>
 	<?php if ( ! empty( $email ) ) : ?>
 		<li class="social-network email">
-			<a href="mailto:<?php echo esc_url( $email ); ?>">
+			<a href="mailto:<?php echo esc_html( $email ); ?>">
 				<?php echo cps_get_svg( array( 'icon' => 'email-social', '' ) ); // WPCS: XSS ok. ?>
 			</a>
 		</li>
