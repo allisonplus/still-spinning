@@ -30,10 +30,6 @@ img {
 	@include media($phone-landscape) {
 		width: 50%;
 	}
-
-	@include media($desktop) {
-		width: initial;
-	}
 } // .size-half
 
 // --------------------------------------------------------------

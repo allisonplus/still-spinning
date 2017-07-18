@@ -175,6 +175,10 @@
 		flex-direction: column;
 
 		@include media($tablet-landscape) {
+			width: 80%;
+		}
+
+		@include media($desktop) {
 			width: 35%;
 		}
 	} // .entry-header
@@ -184,6 +188,9 @@
 
 		@include media($tablet-landscape) {
 			margin-top: 0;
+		}
+
+		@include media($desktop) {
 			width: 60%;
 		}
 	} // .entry-content
@@ -240,3 +247,29 @@
 		} // &::after
 	} // .nav-next
 } // .nav-link
+
+
+.tags-links {
+
+	// Tag link.
+	a {
+		// margin-right: rem(35);
+		background: $color-whitesmoke;
+		color: $color-emperor;
+		display: inline-block;
+		display: inline-block;
+		font-size: 14px;
+		letter-spacing: 1.2px;
+		margin-left: rem(8);
+		padding: rem(6);
+		position: relative;
+		text-transform: uppercase;
+		transform: skew(-20deg);
+	} // a
+
+	// &:hover {
+	// 	padding-left: rem(14);
+	// 	padding-right: rem(14);
+	// 	transition: padding 0.3s;
+	// } // &:hover
+} // .tags-links
