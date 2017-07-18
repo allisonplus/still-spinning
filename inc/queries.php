@@ -43,6 +43,27 @@ function cps_get_archive_posts( $cat_id ) {
 }
 
 /**
+ * Get 6 posts from the relevant tag.
+ *
+ * @param  int|string $tag_slug The tag ID for getting posts.
+ * @return WP_Query The tag/archive posts.
+ */
+function cps_get_archive_tag_posts( $tag_slug ) {
+
+	$paged = ( get_query_var( 'paged' ) ) ? get_query_var( 'paged' ) : 1;
+
+	return new WP_Query( array(
+		'post_type'              => 'post',
+		'tag'                    => $tag_slug,
+		'posts_per_page'         => 6,
+		'no_found_rows'          => true,
+		'update_post_meta_cache' => false,
+		'update_post_term_cache' => false,
+		'paged'                  => $paged,
+	) );
+}
+
+/**
  * Get related posts.
  *
  * @param  int $post_id Post ID.

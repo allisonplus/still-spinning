@@ -64,7 +64,7 @@ function cps_show_related_posts() {
 			<div class="related-posts-grid">
 				<?php while ( $related_posts->have_posts() ) : $related_posts->the_post(); ?>
 
-				<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
+				<article id="post-<?php the_ID(); ?>" <?php post_class( 'related-post' ); ?>>
 
 					<div class="featured-container"><img class ="featured" src="<?php echo esc_attr( cps_get_post_image_uri( 'featured-blog' ) ); ?>" alt="<?php esc_html_e( 'Featured image for ', 'cps' ); ?><?php echo the_title(); ?>"></div><!-- .featured-container -->
 

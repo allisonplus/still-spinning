@@ -24,17 +24,21 @@ get_header(); ?>
 				</header><!-- .page-header -->
 
 				<section class="category-post-container">
-				<?php
-				/* Start the Loop */
+				<?php /* Start the Loop */
 
-				if ( is_category() || is_tag() ) {
-
+				if ( is_category() ) {
 					// Get particular category's object info.
 					$category = get_category( get_query_var( 'cat' ) );
 					$cat_id = $category->cat_ID;
-				}
 
-				$archive_posts = cps_get_archive_posts( $cat_id );
+					$archive_posts = cps_get_archive_posts( $cat_id );
+				} elseif ( is_tag() ) {
+					// Get particular tag's object info.
+					$tag = get_queried_object();
+					$tag_slug = $tag->slug;
+
+					$archive_posts = cps_get_archive_tag_posts( $tag_slug );
+				}
 				?>
 
 					<?php while ( $archive_posts->have_posts() ) : $archive_posts->the_post();
