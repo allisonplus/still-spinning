@@ -11,7 +11,25 @@
 .comment-list {
 	list-style: none;
 	margin: 0;
+	padding: 0;
 } // .comment-list
+
+.comment-content {
+	p {
+		margin: 0 0 rem(8);
+	}
+} // .comment-content
+
+.pingback {
+	background-color: rgba($color-teal, 0.15);
+	padding: 0 rem(12);
+	margin: rem(12) 0;
+	// color: $color-white;
+} // .pingback
+
+.reply {
+	margin: rem(4) 0;
+} // .reply
 
 // Comment-meta
 .comment-meta {
