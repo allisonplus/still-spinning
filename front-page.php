@@ -23,6 +23,8 @@ get_header(); ?>
 
 				cps_show_recent_posts(); // WPCS: XSS ok.
 
+				get_template_part( 'template-parts/content', 'page' );
+
 			endwhile; // End of the loop.
 			?>
 
