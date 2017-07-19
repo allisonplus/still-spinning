@@ -78,6 +78,7 @@
 	// Only target the parent menu
 	.mobile-nav {
 		align-items: flex-end;
+		background-color: $color-white;
 		bottom: 0;
 		display: flex;
 		height: rem(64);

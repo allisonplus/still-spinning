@@ -21,6 +21,10 @@
 	position: relative;
 	z-index: 1;
 
+	@include media($phone-landscape) {
+		width: calc(100% / 2);
+	}
+
 	@include media($tablet-portrait) {
 		margin-bottom: 0;
 		width: calc(100% / 3);
@@ -28,7 +32,10 @@
 
 	// Last post in list.
 	&:last-of-type {
-		margin-bottom: 0;
+
+		@include media($tablet-portrait) {
+			margin-bottom: 0;
+		}
 	} // &:last-of-type
 
 	&:after {
@@ -60,6 +67,10 @@
 		letter-spacing: rem(1.2);
 		margin: 0;
 
+		@include media($tablet-portrait) {
+			line-height: rem(26);
+		}
+
 		@include media($tablet-landscape) {
 			font-size: rem(28);
 			line-height: rem(35);
@@ -85,13 +96,13 @@
 	.post-category {
 		background: $color-whitesmoke;
 		display: inline-block;
-		margin-bottom: rem(12);
+		margin-bottom: rem(15);
 		margin-right: rem(35);
-		padding: rem(6);
+		padding: 0 rem(6);
 		transform: skew(-20deg);
 
 		@include media($tablet-landscape) {
-			margin-bottom: 0;
+			margin-bottom: rem(10);
 		}
 
 		// Category link.

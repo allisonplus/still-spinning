@@ -159,7 +159,7 @@
 .blog-single {
 
 	// Header + Content.
-	article {
+	.article-blog {
 		display: flex;
 		flex-direction: column;
 		justify-content: space-between;
@@ -187,10 +187,12 @@
 	.entry-content {
 
 		@include media($tablet-landscape) {
+			margin-left: rem(32);
 			margin-top: 0;
 		}
 
 		@include media($desktop) {
+			margin-left: 0;
 			width: 60%;
 		}
 	} // .entry-content
