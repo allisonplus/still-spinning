@@ -1,6 +1,6 @@
 <?php
 /**
- * Template Name: Book Quote
+ * Template Name: Quotation
  * Template Post Type: post
  *
  * @link https://developer.wordpress.org/themes/basics/template-hierarchy/#single-post
@@ -21,11 +21,11 @@ get_header(); ?>
 
 			<?php while ( have_posts() ) : the_post(); ?>
 
-				<article <?php post_class(); ?>>
+				<article <?php post_class( 'quote-article' ); ?>>
 
 					<header class="entry-header">
 						<h1 class="entry-title"><?php echo esc_html( $title ); ?></h1>
-						<span class="author"><cite><?php esc_html_e( 'Author: ', 'cps' ); ?><?php echo esc_html( $author ); ?></cite></span></h1>
+						<span class="author"><cite><?php esc_html_e( 'Source: ', 'cps' ); ?><?php echo esc_html( $author ); ?></cite></span></h1>
 
 						<div class="entry-meta">
 							<?php echo cps_single_posted_on(); // WPCS: XSS ok. ?>

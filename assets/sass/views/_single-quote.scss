@@ -3,6 +3,15 @@
 //--------------------------------------------------------------
 .post-template-single-quote {
 
+	.quote-article {
+		display: flex;
+		flex-direction: column;
+
+		@include media($tablet-landscape) {
+			flex-direction: row;
+		}
+	} // .quote-article
+
 	// Quote featured image.
 	.featured-container {
 		text-align: center;
@@ -26,6 +35,11 @@
 			display: block;
 			font-size: rem(18);
 			margin-bottom: $gutter;
+			text-align: center;
+
+			@include media($tablet-landscape) {
+				text-align: left;
+			}
 		} // span
 	} // .entry-header
 
