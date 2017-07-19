@@ -509,3 +509,57 @@ function cps_display_custom_img_sizes( $sizes ) {
 	return $sizes;
 }
 add_filter( 'image_size_names_choose', 'cps_display_custom_img_sizes' );
+
+
+/**
+ * Prints HTML with customized meta information single-post.
+ *
+ * @author Allison Tarr
+ * @param   array $size Potential args to pass.
+ */
+function cps_featured_fallback( $size = 'thumbnail' ) {
+
+	// If featured image is present, use that.
+	if ( has_post_thumbnail() ) {
+
+		$featured_image_id = get_post_thumbnail_id( get_the_ID() );
+		$media = wp_get_attachment_image_src( $featured_image_id, $size );
+
+		if ( is_array( $media ) ) {
+			return current( $media );
+		}
+	} else {
+		// Set up default image path.
+		$media_url = get_stylesheet_directory_uri() . '/assets/images/placeholder.jpg';
+
+		// Get particular category's object info.
+		$queried_object = get_queried_object();
+
+		// Get image ID for this field.
+		$attachment_id = get_field( 'associated_image', $queried_object );
+
+		// URL of image at specific size.
+		$media = $attachment_id['sizes'][ $size ];
+
+		if ( is_array( $media ) ) {
+			return current( $media );
+		}
+	}
+
+	if ( ! isset( $media ) ) {
+		$media = get_stylesheet_directory_uri() . '/assets/images/placeholder.jpg';
+	}
+
+	return $media;
+
+	// Parse args.
+	$args = wp_parse_args( $args, $defaults );
+
+	ob_start();
+	?>
+
+	<!-- <img src="<?php echo esc_url( $media ); ?>" alt=""> -->
+
+	<?php
+	return ob_get_clean();
+}
