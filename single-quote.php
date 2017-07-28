@@ -9,9 +9,12 @@
  */
 
 // Get data from ACF fields.
+$type = get_post_meta( $post->ID, 'type', true );
+
 $title = get_post_meta( $post->ID, 'title', true );
 $author = get_post_meta( $post->ID, 'author', true );
 $link = get_post_meta( $post->ID, 'link', true );
+$subject = get_post_meta( $post->ID, 'subject_matter', true );
 
 get_header(); ?>
 
@@ -24,8 +27,18 @@ get_header(); ?>
 				<article <?php post_class( 'quote-article' ); ?>>
 
 					<header class="entry-header">
+
+						<?php // If book or article, use different title + citation. ?>
+						<?php if ( 'book' == $type || 'article' == $type ) : ?>
+
 						<h1 class="entry-title"><?php echo esc_html( $title ); ?></h1>
-						<span class="author"><cite><?php esc_html_e( 'Source: ', 'cps' ); ?><?php echo esc_html( $author ); ?></cite></span></h1>
+						<span class="author"><cite><?php esc_html_e( 'Author: ', 'cps' ); ?><?php echo esc_html( $author ); ?></cite></span>
+
+						<?php else : ?>
+
+						<h1 class="entry-title"><?php echo esc_html( $author ); ?><?php esc_html_e( ' on ', 'cps' ); ?><?php echo esc_html( $subject ); ?></h1>
+
+						<?php endif; ?>
 
 						<div class="entry-meta">
 							<?php echo cps_single_posted_on(); // WPCS: XSS ok. ?>
@@ -47,9 +60,19 @@ get_header(); ?>
 							</blockquote>
 						</div><!--.quote-container-->
 
-						<div class="featured-container">
-						<a class="source-title" href="<?php echo esc_url( $link ); ?>"><img class ="featured" src="<?php echo esc_attr( cps_get_post_image_uri( 'book-cover' ) ); ?>" alt="<?php esc_html_e( 'Featured image for ', 'cps' ); ?><?php echo the_title(); ?>"></a>
+						<?php // If book or article, use different <img> size. ?>
+						<?php if ( 'book' == $type || 'article' == $type ) : ?>
+
+						<div class="featured-container"><a class="source-title" href="<?php echo esc_url( $link ); ?>"><img class ="featured" src="<?php echo esc_attr( cps_get_post_image_uri( 'book-cover' ) ); ?>" alt="<?php esc_html_e( 'Featured image for ', 'cps' ); ?><?php echo the_title(); ?>"></a>
 						</div><!--.featured-container-->
+
+						<?php else : ?>
+
+						<div class="featured-container"><a class="source-title" href="<?php echo esc_url( $link ); ?>"><img class ="featured" src="<?php echo esc_attr( cps_get_post_image_uri( 'featured-blog' ) ); ?>" alt="<?php esc_html_e( 'Featured image for ', 'cps' ); ?><?php echo the_title(); ?>"></a>
+						</div><!--.featured-container-->
+
+						<?php endif; ?>
+
 
 						<?php
 							wp_link_pages( array(
