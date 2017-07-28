@@ -66,7 +66,7 @@ function cps_show_related_posts() {
 
 				<article id="post-<?php the_ID(); ?>" <?php post_class( 'related-post' ); ?>>
 
-					<div class="featured-container"><img class ="featured" src="<?php echo esc_attr( cps_get_post_image_uri( 'featured-blog' ) ); ?>" alt="<?php esc_html_e( 'Featured image for ', 'cps' ); ?><?php echo the_title(); ?>"></div><!-- .featured-container -->
+					<?php cps_related_featured(); ?>
 
 					<div class="post-info">
 						<h2 class="single-post-title"><a href="<?php the_permalink(); ?>" title="Permalink to: <?php esc_attr( the_title_attribute() ); ?>" rel="bookmark">

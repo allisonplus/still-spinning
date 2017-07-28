@@ -512,9 +512,8 @@ add_filter( 'image_size_names_choose', 'cps_display_custom_img_sizes' );
 
 
 /**
- * Prints HTML with customized meta information single-post.
+ * Fallback <img> for featured image (archive page)
  *
- * @author Allison Tarr
  * @param   array $size Potential args to pass.
  */
 function cps_featured_fallback( $size = 'thumbnail' ) {
@@ -559,6 +558,35 @@ function cps_featured_fallback( $size = 'thumbnail' ) {
 	?>
 
 	<!-- <img src="<?php echo esc_url( $media ); ?>" alt=""> -->
+
+	<?php
+	return ob_get_clean();
+}
+
+
+/**
+ * Markup for Featured <img> (& fallback) <img> for "Related Posts".
+ */
+function cps_related_featured() {
+
+	if ( has_post_thumbnail() ) { ?>
+
+		<div class="featured-container"><img class ="featured" src="<?php echo esc_attr( cps_get_post_image_uri( 'featured-blog' ) ); ?>" alt="<?php esc_html_e( 'Featured image for ', 'cps' ); ?><?php echo the_title(); ?>"></div><!-- .featured-container -->
+	<?php } else {
+		$terms = get_the_terms( get_the_ID(), 'category' );
+
+		if ( ! empty( $terms ) ) {
+
+			$term = array_pop( $terms );
+			$category_img = get_field( 'associated_image', $term );
+		} ?>
+
+		<div class="featured-container"><img class ="featured" src="<?php echo esc_attr( $category_img['sizes']['featured-blog'] ); ?>" alt="<?php esc_html_e( 'Featured image for ', 'cps' ); ?><?php echo the_title(); ?>"></div><!-- .featured-container -->
+	<?php }
+
+	ob_start();
+
+	?>
 
 	<?php
 	return ob_get_clean();
