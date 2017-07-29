@@ -60,19 +60,20 @@ get_header(); ?>
 							</blockquote>
 						</div><!--.quote-container-->
 
-						<?php // If book or article, use different <img> size. ?>
-						<?php if ( 'book' == $type || 'article' == $type ) : ?>
+						<?php // If book or article, use different <img> size.
+						if ( has_post_thumbnail() ) {
 
-						<div class="featured-container"><a class="source-title" href="<?php echo esc_url( $link ); ?>"><img class ="featured" src="<?php echo esc_attr( cps_get_post_image_uri( 'book-cover' ) ); ?>" alt="<?php esc_html_e( 'Featured image for ', 'cps' ); ?><?php echo the_title(); ?>"></a>
-						</div><!--.featured-container-->
+							if ( 'book' == $type || 'article' == $type ) : ?>
 
-						<?php else : ?>
+							<div class="featured-container"><a class="source-title" href="<?php echo esc_url( $link ); ?>"><img class ="featured" src="<?php echo esc_attr( cps_get_post_image_uri( 'book-cover' ) ); ?>" alt="<?php esc_html_e( 'Featured image for ', 'cps' ); ?><?php echo the_title(); ?>"></a>
+							</div><!--.featured-container-->
 
-						<div class="featured-container"><a class="source-title" href="<?php echo esc_url( $link ); ?>"><img class ="featured" src="<?php echo esc_attr( cps_get_post_image_uri( 'featured-blog' ) ); ?>" alt="<?php esc_html_e( 'Featured image for ', 'cps' ); ?><?php echo the_title(); ?>"></a>
-						</div><!--.featured-container-->
+							<?php else : ?>
 
-						<?php endif; ?>
+							<div class="featured-container"><a class="source-title" href="<?php echo esc_url( $link ); ?>"><img class ="featured" src="<?php echo esc_attr( cps_get_post_image_uri( 'featured-blog' ) ); ?>" alt="<?php esc_html_e( 'Featured image for ', 'cps' ); ?><?php echo the_title(); ?>"></a>
+							</div><!--.featured-container-->
 
+							<?php endif; } ?>
 
 						<?php
 							wp_link_pages( array(
