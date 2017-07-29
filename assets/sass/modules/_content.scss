@@ -86,6 +86,7 @@
 	display: none;
 } // .blog .format-aside .entry-title, .archive .format-aside .entry-title
 
+
 // -------------------------------------------------------------
 // Blockquote Styling
 //--------------------------------------------------------------
@@ -98,20 +99,20 @@ blockquote {
 	text-align: center;
 
 	&::before {
-		@include position(absolute, 2.5rem null null 0);
+		@include position(absolute, 40px null null 65px);
 
 		border-top: 1px solid $color-black;
 		content: "";
 		height: rem(1);
-		width: 40%;
+		width: 32%;
 	} // &::before
 
 	&::after {
-		@include position(absolute, 2.5rem 0 null null);
+		@include position(absolute, 40px 65px null null);
 
 		border-top: 1px solid $color-black;
 		content: "";
 		height: rem(1);
-		width: 40%;
+		width: 32%;
 	} // &::after
 } // blockquote

@@ -37,6 +37,7 @@ get_header(); ?>
 						<?php else : ?>
 
 						<h1 class="entry-title"><?php echo esc_html( $author ); ?><?php esc_html_e( ' on ', 'cps' ); ?><?php echo esc_html( $subject ); ?></h1>
+						<span class="author"><cite><a href="<?php echo esc_url( $link ); ?>"><?php esc_html_e( 'Source', 'cps' ); ?></a></cite></span>
 
 						<?php endif; ?>
 
