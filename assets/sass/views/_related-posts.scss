@@ -13,7 +13,7 @@
 	display: flex;
 	flex-direction: column;
 
-	.featured-container {
+	.featured-container-related {
 		max-width: 70%;
 
 		@include media($desktop) {

@@ -32,18 +32,27 @@ get_header(); ?>
 						<?php if ( 'book' == $type || 'article' == $type ) : ?>
 
 						<h1 class="entry-title"><?php echo esc_html( $title ); ?></h1>
+
+						<?php if ( ! empty( $link ) ) : ?>
 						<span class="author"><cite><?php esc_html_e( 'Author: ', 'cps' ); ?><?php echo esc_html( $author ); ?></cite></span>
+						<?php endif; ?>
 
 						<?php else : ?>
 
 						<h1 class="entry-title"><?php echo esc_html( $author ); ?><?php esc_html_e( ' on ', 'cps' ); ?><?php echo esc_html( $subject ); ?></h1>
+
+						<?php if ( ! empty( $link ) ) : ?>
 						<span class="author"><cite><a href="<?php echo esc_url( $link ); ?>"><?php esc_html_e( 'Source', 'cps' ); ?></a></cite></span>
+						<?php endif; ?>
+
 
 						<?php endif; ?>
 
 						<div class="entry-meta">
 							<?php echo cps_single_posted_on(); // WPCS: XSS ok. ?>
 						</div><!-- .entry-meta -->
+
+						<?php echo cps_show_related_posts(); // WPCS: XSS ok. ?>
 
 					</header><!-- .entry-header -->
 

@@ -571,7 +571,7 @@ function cps_related_featured() {
 
 	if ( has_post_thumbnail() ) { ?>
 
-		<div class="featured-container"><img class ="featured" src="<?php echo esc_attr( cps_get_post_image_uri( 'featured-blog' ) ); ?>" alt="<?php esc_html_e( 'Featured image for ', 'cps' ); ?><?php echo the_title(); ?>"></div><!-- .featured-container -->
+		<div class="featured-container-related"><img class ="featured" src="<?php echo esc_attr( cps_get_post_image_uri( 'featured-blog' ) ); ?>" alt="<?php esc_html_e( 'Featured image for ', 'cps' ); ?><?php echo the_title(); ?>"></div><!-- .featured-container -->
 	<?php } else {
 		$terms = get_the_terms( get_the_ID(), 'category' );
 
@@ -581,7 +581,7 @@ function cps_related_featured() {
 			$category_img = get_field( 'associated_image', $term );
 		} ?>
 
-		<div class="featured-container"><img class ="featured" src="<?php echo esc_attr( $category_img['sizes']['featured-blog'] ); ?>" alt="<?php esc_html_e( 'Featured image for ', 'cps' ); ?><?php echo the_title(); ?>"></div><!-- .featured-container -->
+		<div class="featured-container-related"><img class ="featured" src="<?php echo esc_attr( $category_img['sizes']['featured-blog'] ); ?>" alt="<?php esc_html_e( 'Featured image for ', 'cps' ); ?><?php echo the_title(); ?>"></div><!-- .featured-container -->
 	<?php }
 
 	ob_start();
