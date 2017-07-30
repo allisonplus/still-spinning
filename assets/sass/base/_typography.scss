@@ -90,7 +90,28 @@ q {
 	&:after {
 		content: "";
 	}  // &:before, &:after
+
 } // blockquote, q
+
+// -------------------------------------------------------------
+// Regular Content Blockquote Styling
+//--------------------------------------------------------------
+blockquote {
+	font-size: rem(20);
+	font-style: italic;
+	line-height: 1.5;
+	padding-top: rem(60);
+	position: relative;
+	width: 90%;
+
+	&::before {
+		@include position(absolute, 40px null null 0);
+
+		border-top: 6px solid rgba($color-teal, 0.3);
+		content: "";
+		width: 95%;
+	} // &::before
+} // blockquote
 
 address {
 	margin: 0 0 rem(24) 0;
@@ -124,6 +145,12 @@ mark,
 ins {
 	text-decoration: none;
 } // mark, ins
+
+mark {
+	background-color: $color-teal;
+	color: $color-white;
+	padding: 0 rem(3);
+}
 
 sup,
 sub {

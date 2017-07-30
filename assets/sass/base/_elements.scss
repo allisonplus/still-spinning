@@ -30,11 +30,12 @@ figure {
 
 ul,
 ol {
-	margin: 0 0 rem(48) rem(24);
+	margin: 0 0 rem(48) rem(16);
 } // ul, ol
 
 ul {
 	list-style: disc;
+	margin-top: rem(12);
 } // ul
 
 ol {

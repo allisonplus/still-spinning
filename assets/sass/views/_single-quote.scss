@@ -58,13 +58,33 @@
 			font-size: rem(99);
 		} // &:before
 
-		// // Quote source link.
-		// .source-title {
+		// Blockquote styling for this type of template.
+		blockquote {
+			font-size: rem(24);
+			font-style: italic;
+			line-height: 1.5;
+			padding-top: 6rem;
+			position: relative;
+			text-align: center;
+			width: 100%;
 
-		// 	&:hover {
-		// 		color: $color-link-hover;
-		// 		text-decoration: underline;
-		// 	} // &:hover
-		// } // .source-title
+			&::before {
+				@include position(absolute, 40px null null 65px);
+
+				border-top: 1px solid $color-black;
+				content: "";
+				height: rem(1);
+				width: 32%;
+			} // &::before
+
+			&::after {
+				@include position(absolute, 40px 65px null null);
+
+				border-top: 1px solid $color-black;
+				content: "";
+				height: rem(1);
+				width: 32%;
+			} // &::after
+		} // blockquote
 	} // .quote-container
 } // post-template-single-quote
