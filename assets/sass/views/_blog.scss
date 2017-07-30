@@ -30,10 +30,6 @@
 		position: relative;
 		text-align: center;
 
-		@include media($tablet-portrait) {
-			margin-top: rem(20);
-		}
-
 		@include media($tablet-landscape) {
 			text-align: left;
 		}
