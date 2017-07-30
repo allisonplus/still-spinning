@@ -16,14 +16,28 @@ textarea {
 // Headers
 //--------------------------------------------------------------
 
+// Loop through headings for common styles.
+@function headings($from: 1, $to: 6) {
+	@if $from == $to {
+		@return "h#{$from}, .h#{$from}";
+	} @else {
+		@return "h#{$from}, .h#{$from}," + headings($from + 1, $to);
+	}
+}
+
+// Output headings.
+#{headings(1, 6)} {
+	font-family: $font-serif;
+} // #{headings(1, 6)}
+
 h1,
 .h1 {
-	font-family: $font-sans;
+	margin-top: 0;
 } // h1, .h1
 
 h2,
 .h2 {
-	font-family: $font-sans;
+
 } // h2, .h2
 
 h3,
