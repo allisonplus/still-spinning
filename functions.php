@@ -91,7 +91,7 @@ add_action( 'after_setup_theme', 'cps_setup' );
  * @global int $content_width
  */
 function cps_content_width() {
-	$GLOBALS['content_width'] = apply_filters( 'cps_content_width', 640 );
+	$GLOBALS['content_width'] = apply_filters( 'cps_content_width', 800 );
 }
 add_action( 'after_setup_theme', 'cps_content_width', 0 );
 
