@@ -10,9 +10,7 @@
 ?>
 
 <article <?php post_class( 'blog-post' ); ?>>
-	<div class="featured-container">
-		<img class ="featured" src="<?php echo esc_attr( cps_get_post_image_uri( 'featured-blog' ) ); ?>" alt="<?php esc_html_e( 'Featured image for ', 'cps' ); ?><?php echo the_title(); ?>">
-	</div>
+	<div class="featured-container"><img class ="featured" src="<?php echo esc_attr( cps_featured_fallback( 'featured-blog' ) ); ?>" alt="<?php esc_html_e( 'Featured image for ', 'cps' ); ?><?php echo the_title(); ?>"></div><!-- .featured-container -->
 
 	<div class="blog-content">
 		<header class="entry-header">
